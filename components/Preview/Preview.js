@@ -26,7 +26,10 @@ const Preview = ({ setIsOpen }) => {
   return (
     <div className={styles.preview} ref={previewRef}>
       <video autoPlay loop muted className={styles.videoPreview}>
-        <source src="/assets/video-opening-web.mp4" type="video/mp4" />
+        <source
+          src="https://storage.googleapis.com/exqueen/video/video-opening-web.mp4"
+          type="video/mp4"
+        />
         Browser tidak support
       </video>
       <div className={styles.contents}>
