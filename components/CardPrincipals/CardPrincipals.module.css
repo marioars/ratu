@@ -1,0 +1,40 @@
+.container {
+  border: 2px solid var(--lightBlue);
+  width: 365px;
+  min-height: 658px;
+  border-radius: var(--roundedSmall);
+  position: relative;
+}
+
+.imageContainer {
+  text-align: center;
+  padding: 1rem;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.container span {
+  display: block;
+  padding: 1rem;
+}
+
+.descBold {
+  font-weight: 600;
+}
+
+.container button {
+  width: 100%;
+  height: 53px;
+  border: none;
+  background-color: var(--lightGrey);
+  color: var(--lightBlue);
+  text-decoration: underline;
+  text-transform: capitalize;
+  position: absolute;
+  bottom: 0;
+  border-bottom-left-radius: var(--roundedSmall);
+  border-bottom-right-radius: var(--roundedSmall);
+  cursor: pointer;
+}

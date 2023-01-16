@@ -1,0 +1,68 @@
+.preview {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
+
+.videoPreview {
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.preview .contents {
+  width: 16.883rem;
+  height: 5rem;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contents .titlePreview {
+  width: 40rem;
+  margin-bottom: 1rem;
+}
+
+.titlePreview span {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: var(--sizeXlarge);
+  font-weight: 700;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.buttonContainer button {
+  background-color: var(--grey2);
+  border-radius: var(--roundedMedium);
+  font-size: var(--sizeSmall);
+  color: var(--white);
+  text-transform: uppercase;
+  padding: 1rem 3rem;
+  margin-top: 2.5rem;
+  outline: none;
+  border: 3px solid black;
+  cursor: pointer;
+  height: 4rem;
+  width: 16rem;
+}
+
+.buttonContainer button:hover {
+  background-color: var(--lightBlue);
+}
+
+.contents .explore:hover {
+  cursor: pointer;
+}

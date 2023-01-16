@@ -1,0 +1,68 @@
+.container {
+  height: 80vh;
+  background-color: var(--opacityBlue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.borderContainer {
+  border: 3px solid var(--blue);
+  border-radius: 5px;
+  padding: .1rem;
+  position: relative;
+  display: flex;
+}
+
+.selOpt {
+  height: 2.5rem;
+  width: 20rem;
+  border: none;
+}
+
+.inputText {
+  height: 2.5rem;
+  width: 30rem;
+  background-color: white;
+  outline: none;
+  border: none;
+}
+
+.inputText::placeholder {
+  color: var(--centerBlue);
+}
+
+.lineVertical {
+  border-left: 3px solid var(--centerBlue);
+  height: 2rem;
+  margin: .2rem .5rem 0 .5rem;
+  background-color: white;
+}
+
+.borderContainer button {
+  position: absolute;
+  right: 5px;
+  height: 2.5rem;
+  width: 7rem;
+  background-color: var(--centerBlue);
+  border-radius: 10px;
+  font-size: var(--sizeSmall);
+  color: var(--white);
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}

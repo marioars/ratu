@@ -1,0 +1,60 @@
+.container {
+  background-color: var(--opacityBlue);
+  padding: var(--paddingContainer);
+  padding-top: 3rem;
+}
+
+.imgContainer {
+  background-color: var(--opacityBlue);
+  padding: 4rem 0;
+}
+
+.slide, .slide .image {
+  width: 100%;
+}
+
+.slide {
+  opacity: .5;
+  transform: scale(.7);
+  transition: .5s;
+}
+
+.slide_active {
+  transform: scale(1);
+}
+
+.descContainer {
+  padding: 3rem 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contentTitle span {
+  display: block;
+  text-transform: capitalize;
+  font-size: var(--size2Xlarge);
+  font-weight: 700;
+}
+
+.buttonMore button {
+  background-color: var(--grey2);
+  border-radius: var(--roundedMedium);
+  font-size: var(--sizeSmall);
+  color: var(--white);
+  text-transform: uppercase;
+  padding: 1rem 3rem;
+  margin-top: 2.5rem;
+  outline: none;
+  border: 3px solid black;
+  cursor: pointer;
+}
+
+.buttonMore button:hover {
+  background-color: var(--lightBlue);
+}

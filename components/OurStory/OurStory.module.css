@@ -1,0 +1,53 @@
+.container {
+  padding: var(--paddingContainer);
+  margin: 5rem 0;
+}
+
+.title {
+  padding: 0 0 2rem 0;
+}
+
+.title span {
+  display: block;
+  text-transform: capitalize;
+  font-size: var(--size2Xlarge);
+  font-weight: 700;
+}
+
+.desc {
+  width: 50vw;
+}
+
+.desc span {
+  line-height: var(--leading2);
+  font-weight: 500;
+}
+
+.buttonMore button {
+  background-color: var(--grey2);
+  border-radius: var(--roundedMedium);
+  font-size: var(--sizeSmall);
+  color: var(--white);
+  text-transform: uppercase;
+  padding: 1rem 3rem;
+  margin-top: 2.5rem;
+  outline: none;
+  border: 3px solid black;
+  cursor: pointer;
+}
+
+.buttonMore button:hover {
+  background-color: var(--lightBlue);
+}
+
+.imageContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2rem;
+}
+
+.image {
+  width: 950px;
+  height: 350px;
+}

@@ -1,0 +1,36 @@
+.container {
+  padding: var(--paddingContainer);
+  background-color: var(--opacityBlue);
+  padding-bottom: 5rem;
+}
+
+.titleContainer {
+  padding: 3rem 0;
+}
+
+.title {
+  font-size: var(--size2Xlarge);
+}
+
+.title span {
+  display: block;
+  text-transform: capitalize;
+  line-height: var(--leading);
+  font-weight: 700;
+}
+
+.subtitle {
+  margin-top: 1rem;
+}
+
+.subtitle span {
+  display: block;
+  font-weight: 500;
+}
+
+.principalsContainer {
+  display: flex;
+  gap: 1rem;
+  row-gap: 1.5rem;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,69 @@
+.container {
+  padding: var(--paddingContainer);
+  background-color: var(--opacityBlue);
+  padding-top: 2rem;
+}
+
+.title {
+  margin-bottom: 5rem;
+}
+
+.title span {
+  font-size: var(--size2Xlarge);
+  display: block;
+  text-transform: capitalize;
+  line-height: var(--leading);
+  font-weight: 700;
+}
+
+.shipContainer {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.ship {
+  object-fit: cover;
+  width: 200px;
+  height: 110px;
+}
+
+.anchorContainer {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.anchor {
+  object-fit: cover;
+  width: 70px;
+  height: 85px;
+}
+
+.leadershipTitle {
+  text-align: center;
+}
+
+.leadershipTitle span {
+  font-size: var(--size2Xlarge);
+  display: block;
+  text-transform: capitalize;
+  line-height: var(--leading);
+  font-weight: 700;
+}
+
+.teamListContainer {
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.teamName {
+  font-weight: 700;
+}
+
+.teamImage {
+  width: 264px;
+  height: 381px;
+}

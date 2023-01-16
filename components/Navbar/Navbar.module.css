@@ -1,0 +1,23 @@
+.nav {
+  height: var(--heightNavbar);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 100vw;
+  padding: var(--paddingContainer);
+  color: var(--grey);
+}
+
+.navitem {
+  text-transform: uppercase;
+  font-size: var(--sizeSmall);
+  font-weight: 600;
+}
+
+.navitem span:not(:last-child) {
+  padding: 0 1rem;
+}
+
+.navitem span:last-child {
+  padding-left: 1rem;
+}
