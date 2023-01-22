@@ -21,7 +21,7 @@ const Navbar = () => {
           <span>home</span>
         </Link>
         <Link href="/our-story">
-          <span>our story company</span>
+          <span>our story</span>
         </Link>
         <Link href="/our-principals">
           <span>our principals</span>

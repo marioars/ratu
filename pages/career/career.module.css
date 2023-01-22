@@ -11,9 +11,11 @@
   justify-content: center;
   text-align: center;
   margin-bottom: 5rem;
+  /* width: 70%; */
 }
 
 .borderContainer {
+  background-color: white;
   border: 3px solid var(--blue);
   border-radius: 5px;
   padding: .1rem;
@@ -23,14 +25,13 @@
 
 .selOpt {
   height: 2.5rem;
-  width: 20rem;
+  width: 25rem;
   border: none;
 }
 
 .inputText {
   height: 2.5rem;
-  width: 30rem;
-  background-color: white;
+  width: 35rem;
   outline: none;
   border: none;
 }
@@ -42,8 +43,14 @@
 .lineVertical {
   border-left: 3px solid var(--centerBlue);
   height: 2rem;
-  margin: .2rem .5rem 0 .5rem;
+  margin: .2rem .5rem 0 1.5rem;
   background-color: white;
+}
+
+.iconSearch {
+  display: flex;
+  align-items: center;
+  margin: 0 2rem;
 }
 
 .borderContainer button {

@@ -3,8 +3,9 @@ import Image from "next/image";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 import styles from "./career.module.css";
 import { myLoader } from "../../configs/loader";
+import { server } from "../../configs/domain";
 
-const Career = () => {
+const Career = ({ principals }) => {
   return (
     <AnimatedPage>
       <Head>
@@ -22,21 +23,27 @@ const Career = () => {
               name="principals"
               id="principals"
               placeholder="Principals"
-              defaultValue="Principals"
             >
-              <option value="" disabled>
-                Principals
-              </option>
-              <option value="viking">viking</option>
-              <option value="disney-cruise">disney cruise</option>
-              <option value="london-wellness">london wellness</option>
-              <option value="marella-cruises">marella cruises</option>
-              <option value="pro-cruises">pro cruises</option>
-              <option value="sea-chefs">sea chefs</option>
-              <option value="voyages">voyages</option>
-              <option value="world-residence">world residence</option>
+              <option defaultValue="Principals">Principals</option>
+              {principals.data.map((item) => (
+                <option
+                  className={styles.listOption}
+                  key={item.id_principal}
+                  value={item.name_principal}
+                >
+                  {item.name_principal}
+                </option>
+              ))}
             </select>
             <div className={styles.lineVertical}></div>
+            <div className={styles.iconSearch}>
+              <Image
+                src="/assets/icon-search.png"
+                alt="search_icon"
+                width={20}
+                height={20}
+              />
+            </div>
             <input
               className={styles.inputText}
               type="text"
@@ -85,3 +92,17 @@ const Career = () => {
 };
 
 export default Career;
+
+export const getStaticProps = async () => {
+  const res = await fetch(server + "/api/v1/career/all-principal");
+  const principals = await res.json();
+  if (!res.ok) {
+    throw new Error(`Failed to fetch, received status ${res.status}`);
+  }
+  return {
+    props: {
+      principals,
+    },
+    revalidate: 10,
+  };
+};

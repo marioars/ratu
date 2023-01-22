@@ -1,14 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./Footer.module.css";
-// import logoWhite from "/assets/logo-ratu-white.png";
-// import facebook from "/assets/facebook.png";
-// import youtube from "/assets/youtube.png";
-// import twitter from "/assets/twitter.png";
-// import instagram from "/assets/instagram.png";
-// import facebook from "https://storage.cloud.google.com/exqueen/upload-gambar/frontstatis/facebook.png";
-// import youtube from "https://storage.cloud.google.com/exqueen/upload-gambar/frontstatis/youtube.png";
-// import twitter from "https://storage.cloud.google.com/exqueen/upload-gambar/frontstatis/twitter.png";
-// import instagram from "https://storage.cloud.google.com/exqueen/upload-gambar/frontstatis/instagram.png";
 
 const Footer = () => {
   return (
@@ -29,36 +21,52 @@ const Footer = () => {
         </div>
         <div className={styles.footerDescHeader}>
           <div className={styles.medsos}>
-            <Image
-              src="/assets/facebook.png"
-              height={19}
-              width={10}
-              alt="facebook"
-            />
+            <Link href="#" rel="noreferrer" target="_blank">
+              <Image
+                src="/assets/facebook.png"
+                height={19}
+                width={10}
+                alt="facebook"
+              />
+            </Link>
           </div>
           <div className={styles.medsos}>
-            <Image
-              src="/assets/youtube.png"
-              height={15}
-              width={22}
-              alt="youtube"
-            />
+            <Link
+              href="https://www.youtube.com/@ratuoceaniaraya3406"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <Image
+                src="/assets/youtube.png"
+                height={15}
+                width={22}
+                alt="youtube"
+              />
+            </Link>
           </div>
           <div className={styles.medsos}>
-            <Image
-              src="/assets/twitter.png"
-              height={16}
-              width={20}
-              alt="twitter"
-            />
+            <Link href="#" rel="noreferrer" target="_blank">
+              <Image
+                src="/assets/twitter.png"
+                height={16}
+                width={20}
+                alt="twitter"
+              />
+            </Link>
           </div>
           <div className={styles.medsos}>
-            <Image
-              src="/assets/instagram.png"
-              height={18}
-              width={19}
-              alt="instagram"
-            />
+            <Link
+              href="https://www.instagram.com/officialratuoceaniaraya/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <Image
+                src="/assets/instagram.png"
+                height={18}
+                width={19}
+                alt="instagram"
+              />
+            </Link>
           </div>
         </div>
         <div className={styles.footerDescBot}>

@@ -26,7 +26,7 @@ const OurPrincipals = ({ principals }) => {
           ></div>
         </div>
         <div className={styles.principalsContainer}>
-          {principals.data.map((item, i) => (
+          {principals.data?.map((item, i) => (
             <CardPrincipals key={i} item={item} />
           ))}
         </div>
