@@ -4,10 +4,7 @@
 }
 
 .title {
-  padding: 0 0 2rem 0;
-}
-
-.title span {
+  width: 30rem;
   display: block;
   text-transform: capitalize;
   font-size: var(--size2Xlarge);
@@ -16,9 +13,6 @@
 
 .desc {
   width: 50vw;
-}
-
-.desc span {
   line-height: var(--leading2);
   font-weight: 500;
 }
@@ -30,7 +24,7 @@
   color: var(--white);
   text-transform: uppercase;
   padding: 1rem 3rem;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   outline: none;
   border: 3px solid black;
   cursor: pointer;

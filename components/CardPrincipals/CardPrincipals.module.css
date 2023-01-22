@@ -4,6 +4,7 @@
   min-height: 658px;
   border-radius: var(--roundedSmall);
   position: relative;
+  background-color: var(--white);
 }
 
 .imageContainer {

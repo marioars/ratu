@@ -1,35 +1,9 @@
 import Image from "next/image";
 import Slider from "react-slick";
 import { myLoader } from "../../configs/loader";
-import { server } from "../../configs/domain";
 
-const data = [
-  {
-    src: "/assets/images/banner1.jpg",
-    alt: "banner1",
-  },
-  {
-    src: "/assets/images/banner2.jpg",
-    alt: "banner2",
-  },
-  {
-    src: "/assets/images/banner3.jpg",
-    alt: "banner3",
-  },
-  {
-    src: "/assets/images/banner4.jpg",
-    alt: "banner4",
-  },
-  {
-    src: "/assets/images/banner5.jpg",
-    alt: "banner5",
-  },
-  {
-    src: "/assets/images/banner6.jpg",
-    alt: "banner6",
-  },
-];
-const BannerSlider = () => {
+const BannerSlider = (props) => {
+  const { banners: data } = props;
   const settings = {
     dots: true,
     autoplay: true,
@@ -49,16 +23,16 @@ const BannerSlider = () => {
   };
   return (
     <Slider {...settings}>
-      {data.map((item, i) => (
+      {data?.map((item, i) => (
         <div key={i}>
           <Image
-            src={item.src}
+            src={item.image_banner}
             width="0"
             height="0"
-            alt={item.alt}
+            alt="banner"
             priority
             loader={myLoader}
-            style={{ width: "100%", height: "600px" }}
+            style={{ width: "100%", height: "600px", objectFit: "cover" }}
           />
         </div>
       ))}

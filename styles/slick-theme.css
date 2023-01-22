@@ -180,7 +180,8 @@
   background-color: #fff;
   border-radius: 4px;
   position: relative;
-  bottom: -60px;
+  bottom: -70px;
+  right: 320px;
 }
 
 .slick-dots li {
@@ -201,13 +202,11 @@
 
 .slick-dots .slick-active .ft-slick__dots--custom-principals {
   width: 36px;
-  bottom: -60px;
+  bottom: -70px;
 }
 
 .slick-dots .slick-active .ft-slick__dots--custom .loading {
   height: 8px;
-  animation: loading 3s ease-in;
-  background-image: linear-gradient(270deg, #ffffff, #0B3A7E);
   display: inline-block;
   position: absolute;
   top: 0;
@@ -217,8 +216,6 @@
 
 .slick-dots .slick-active .ft-slick__dots--custom-principals .loading {
   height: 8px;
-  animation: loading 3s ease-in;
-  background-image: linear-gradient(270deg, #ffffff, #0B3A7E);
   display: inline-block;
   position: absolute;
   left: 0;

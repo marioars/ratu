@@ -9,10 +9,11 @@
 }
 
 .title {
-  font-size: var(--size2Xlarge);
+  width: 5rem;
 }
 
 .title span {
+  font-size: var(--size2Xlarge);
   display: block;
   text-transform: capitalize;
   line-height: var(--leading);
@@ -21,9 +22,7 @@
 
 .subtitle {
   margin-top: 1rem;
-}
-
-.subtitle span {
+  width: 36%;
   display: block;
   font-weight: 500;
 }

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./CardPrincipals.module.css";
 import { myLoader } from "../../configs/loader";
 import { motion } from "framer-motion";
@@ -19,18 +20,25 @@ const CardPrincipals = ({ item }) => {
       <div className={styles.imageContainer}>
         <Image
           className={styles.image}
-          src={item.src}
-          width={120}
-          height={120}
+          src={item.logo_principal}
+          width={160}
+          height={160}
           alt="logo"
           priority
           loader={myLoader}
         />
       </div>
       <hr />
-      <span className={styles.descBold}>{item.descBold}</span>
-      <span>{item.desc}</span>
-      <button>visit website</button>
+      <span className={styles.descBold}>{item.slogan_principal}</span>
+      <span>{item.desc_principal}</span>
+      <Link
+        href={item.website_principal}
+        passHref={true}
+        rel="noreferrer"
+        target="_blank"
+      >
+        <button>visit website</button>
+      </Link>
     </motion.div>
   );
 };

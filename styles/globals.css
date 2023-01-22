@@ -5,7 +5,8 @@
   --sizeMedium: 1rem;
   --sizeLarge: 1.25rem;
   --sizeXlarge: 3rem;
-  --size2Xlarge: 4rem;
+  --size2Xlarge: 3.5rem;
+  --size3Xlarge: 4rem;
 
   --white: #fff;
   --opacityBlue: #E4ECF6;
@@ -44,6 +45,7 @@ html {
 body {
   font-family: var(--montserrat);
   background-color: var(--white);
+  overflow-x: hidden;
 }
 
 a {

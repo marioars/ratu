@@ -7,10 +7,33 @@
 .imgContainer {
   background-color: var(--opacityBlue);
   padding: 4rem 0;
+  display: flex;
+  column-gap: 5rem;
+}
+
+.vectorContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.vector {
+  object-fit: cover;
+  width: 370px;
+  height: 100%;
+}
+
+.descriptionContainer {
+  width: 80%;
 }
 
 .slide, .slide .image {
   width: 100%;
+}
+
+.imagePrincipal {
+  background-color: var(--white);
+  border: 4px solid var(--lightBlue);
+  border-radius: var(--roundedMedium);
 }
 
 .slide {
@@ -23,16 +46,8 @@
   transform: scale(1);
 }
 
-.descContainer {
-  padding: 3rem 0;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.contentContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.contentTitle {
+  padding-bottom: 2rem;
 }
 
 .contentTitle span {
@@ -40,6 +55,10 @@
   text-transform: capitalize;
   font-size: var(--size2Xlarge);
   font-weight: 700;
+}
+
+.buttonMore {
+  padding-top: 3rem;
 }
 
 .buttonMore button {

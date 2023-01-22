@@ -1,15 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
 import styles from "./our-story.module.css";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 import ship from "../../public/assets/logo-kapal.png";
 import anchor from "../../public/assets/logo-anchor.png";
 import { myLoader } from "../../configs/loader";
+import { server } from "../../configs/domain";
 
 const dataLeadership = [
   {
@@ -19,7 +15,7 @@ const dataLeadership = [
   },
 ];
 
-const OurStory = () => {
+const OurStory = ({ ourStory }) => {
   return (
     <AnimatedPage>
       <Head>
@@ -32,8 +28,7 @@ const OurStory = () => {
       </Head>
       <div className={styles.container}>
         <div className={styles.title}>
-          <span>our story</span>
-          <span>company</span>
+          <span>{ourStory.data.title_section}</span>
         </div>
         <div className={styles.shipContainer}>
           <Image
@@ -46,59 +41,22 @@ const OurStory = () => {
             priority
           />
         </div>
-        <VerticalTimeline>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            iconStyle={{
-              background: "rgb(33, 150, 243)",
-              color: "#fff",
-              display: "flex",
-            }}
-          >
-            <h1 className="vertical-timeline-element-title">Oct - 2007</h1>
-            <p className="vertical-timeline-element-title">
-              Ratu Oceania Raya opens for business in Jakarta
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-          >
-            <h1 className="vertical-timeline-element-title">Nov - 2007</h1>
-            <p>
-              Started sending crew on board many of the world’s leading cruise
-              lines
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-          >
-            <h1 className="vertical-timeline-element-title">Sep - 2010</h1>
-            <p>
-              Became Royal Caribbean’s “Highest Success Rate Hiring Partner” for
-              sending crew on board
-            </p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
-          >
-            <h1
-              className="vertical-timeline-element-title"
-              style={{ marginBottom: "1.5rem" }}
-            >
-              SINCE 2010
-            </h1>
-            <div>
-              <span>ISO 9001:2008/MLC 2006 Certified License from</span>
-              <ul>
-                <li>The Ministry for Transportation</li>
-                <li>Director General for Sea Transportation</li>
-              </ul>
-            </div>
-          </VerticalTimelineElement>
-        </VerticalTimeline>
+        <div class={styles.timelineSection}>
+          <div class={styles.timelineItems}>
+            {ourStory.data.story.map((item, i) => (
+              <div key={i} class={styles.timelineItem}>
+                <div class={styles.timelineDot}></div>
+                <div class={styles.timelineDate}>
+                  {item.month_story_company} - {item.year_story_company}
+                </div>
+                <div
+                  class={styles.timelineContent}
+                  dangerouslySetInnerHTML={{ __html: item.story_company }}
+                ></div>
+              </div>
+            ))}
+          </div>
+        </div>
         <div className={styles.anchorContainer}>
           <Image
             src={anchor}
@@ -110,7 +68,7 @@ const OurStory = () => {
             priority
           />
         </div>
-        <div className={styles.LeadershipContainer}>
+        {/* <div className={styles.LeadershipContainer}>
           <div className={styles.leadershipTitle}>
             <span>leadership team</span>
           </div>
@@ -129,10 +87,24 @@ const OurStory = () => {
               <span>{item.position}</span>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </AnimatedPage>
   );
 };
 
 export default OurStory;
+
+export const getStaticProps = async () => {
+  const res = await fetch(server + "/api/v1/our-story/section");
+  const ourStory = await res.json();
+  if (!res.ok) {
+    throw new Error(`Failed to fetch posts, received status ${res.status}`);
+  }
+  return {
+    props: {
+      ourStory,
+    },
+    revalidate: 10,
+  };
+};

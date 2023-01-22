@@ -27,7 +27,7 @@ const Navbar = () => {
           <span>our principals</span>
         </Link>
         <Link href="/career">
-          <span>career</span>
+          <span>careers at sea</span>
         </Link>
       </div>
     </nav>

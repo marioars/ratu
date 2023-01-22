@@ -2,15 +2,17 @@
   padding: var(--paddingContainer);
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 4rem;
   margin: 3rem 0;
 }
 
 .imageContainer {
-  padding-top: 5rem;
+  padding-top: 4rem;
 }
 
-.descTitle span {
+.descTitle {
+  width: 1rem;
   display: block;
   font-size: var(--size2Xlarge);
   font-weight: 700;
@@ -21,6 +23,7 @@
   line-height: var(--leading2);
   width: 500px;
   font-weight: 500;
+  margin-left: -1.4rem;
 }
 
 .description ul li {

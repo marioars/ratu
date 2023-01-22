@@ -19,7 +19,7 @@
 
 .preview .contents {
   width: 16.883rem;
-  height: 5rem;
+  height: 11rem;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -35,8 +35,9 @@
   display: block;
   text-align: center;
   text-transform: uppercase;
-  font-size: var(--sizeXlarge);
-  font-weight: 700;
+  font-size: var(--size2Xlarge);
+  font-weight: 800;
+  color: var(--white);
 }
 
 .buttonContainer {
@@ -51,7 +52,7 @@
   color: var(--white);
   text-transform: uppercase;
   padding: 1rem 3rem;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   outline: none;
   border: 3px solid black;
   cursor: pointer;

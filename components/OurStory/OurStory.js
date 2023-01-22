@@ -3,7 +3,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import styles from "./OurStory.module.css";
 import { myLoader } from "../../configs/loader";
-const OurStory = () => {
+
+const OurStory = (props) => {
+  const { section } = props;
   return (
     <div className={styles.container}>
       <motion.div
@@ -17,8 +19,7 @@ const OurStory = () => {
         }}
         viewport={{ once: true }}
       >
-        <span>our story</span>
-        <span>company</span>
+        {section.title_section}
       </motion.div>
       <motion.div
         className={styles.desc}
@@ -30,16 +31,8 @@ const OurStory = () => {
           duration: 1,
         }}
         viewport={{ once: true }}
-      >
-        <span>
-          Our strict attention to detail and commitment to fair andequitable
-          practices, enables Ratu to maintain the prestgious ISO:9001 quality
-          rating. Our close relationships with government agencies, our
-          expertise in providing visa and travel services, andour commitment to
-          honesty and ethics has resulted in Ratu Oceania Raya being recognized
-          as the premier crew placement agent in Indonesia.
-        </span>
-      </motion.div>
+        dangerouslySetInnerHTML={{ __html: section.text_content }}
+      ></motion.div>
       <motion.div
         className={styles.buttonMore}
         initial={{ y: 200 }}
@@ -52,7 +45,7 @@ const OurStory = () => {
         viewport={{ once: true }}
       >
         <Link href="/our-story">
-          <button>more story</button>
+          <button>our story in full</button>
         </Link>
       </motion.div>
       <motion.div
@@ -67,7 +60,7 @@ const OurStory = () => {
         viewport={{ once: true }}
       >
         <Image
-          src="/assets/images/our-story-company.png"
+          src={section.image_section}
           width={0}
           height={0}
           alt="our_story_company"

@@ -1,12 +1,10 @@
 import styles from "./Quote.module.css";
 
-const Quote = () => {
+const Quote = (props) => {
+  const { slogan } = props;
   return (
     <div className={styles.container}>
-      <span>
-        “We are proud to received the accolade of “Best Hiring Partner” from
-        four of our cruise line clients for 2 years in a row.”
-      </span>
+      <span>{slogan.text}</span>
     </div>
   );
 };

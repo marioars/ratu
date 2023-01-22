@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 import styles from "./career.module.css";
+import { myLoader } from "../../configs/loader";
 
 const Career = () => {
   return (
@@ -21,8 +22,9 @@ const Career = () => {
               name="principals"
               id="principals"
               placeholder="Principals"
+              defaultValue="Principals"
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Principals
               </option>
               <option value="viking">viking</option>
@@ -49,24 +51,32 @@ const Career = () => {
             height={232}
             width={232}
             alt="career"
+            priority
+            loader={myLoader}
           />
           <Image
             src="/assets/images/career2.png"
             height={232}
             width={232}
             alt="career"
+            priority
+            loader={myLoader}
           />
           <Image
             src="/assets/images/career3.png"
             height={232}
             width={232}
             alt="career"
+            priority
+            loader={myLoader}
           />
           <Image
             src="/assets/images/career4.png"
             height={232}
             width={232}
             alt="career"
+            priority
+            loader={myLoader}
           />
         </div>
       </div>
