@@ -67,3 +67,10 @@
 .contents .explore:hover {
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .preview {
+    height: 100%;
+    width: 100%;
+  }
+}

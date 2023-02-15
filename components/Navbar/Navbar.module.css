@@ -8,10 +8,72 @@
   color: var(--grey);
 }
 
+.logo {
+  margin: .5rem 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.menu_button_container {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu_toggle {
+  display: none;
+}
+
+.menu_button,
+.menu_button::before,
+.menu_button::after {
+  display: block;
+  background-color: var(--centerBlue);
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu_button::before {
+  content: '';
+  margin-top: -8px;
+}
+
+.menu_button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+#menu_toggle:checked + .menu_button_container .menu_button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+
+#menu_toggle:checked + .menu_button_container .menu_button {
+  background: rgba(255, 255, 255, 0);
+}
+
+#menu_toggle:checked + .menu_button_container .menu_button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
 .navitem {
   text-transform: uppercase;
   font-size: var(--sizeSmall);
   font-weight: 600;
+  display: flex;
+}
+
+.navitem > li {
+  list-style: none;
+  text-decoration: none;
 }
 
 .navitem span:not(:last-child) {
@@ -20,4 +82,45 @@
 
 .navitem span:last-child {
   padding-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .menu_button_container {
+    display: flex;
+    padding-right: 3rem;
+  }
+  .navitem {
+    position: absolute;
+    top: -8px;
+    margin-top: 50px;
+    right: 34px;
+    flex-direction: column;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+  }
+  #menu-toggle ~ .navitem li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .navitem li {
+    height: 2em;
+    padding: 0.5em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .navitem > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
+    background-color: var(--centerBlue);
+  }
+  .navitem > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
 }

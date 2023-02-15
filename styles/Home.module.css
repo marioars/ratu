@@ -1,4 +1,32 @@
-.bottomInfo {
-  height: 435px;
+.addressContainer {
   background-color: var(--blue);
+  color: var(--white);
+  min-height: 235px;
+  display: flex;
+  justify-content: center;
+  column-gap: 4rem;
+  padding: 3rem 1rem;
+  /* align-items: flex-start; */
+  /* width: 100vw; */
+}
+
+.titleAddressContainer {
+  width: 10%;
+}
+
+.titleAddressContainer span {
+  font-size: var(--sizeXlarge);
+  font-weight: 600;
+}
+
+.addressLocationContainer {
+  margin-top: 1rem;
+  width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.listAddress {
+  width: 352px;
 }

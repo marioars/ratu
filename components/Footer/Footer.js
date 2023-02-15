@@ -15,9 +15,9 @@ const Footer = () => {
       </div>
       <div className={styles.footerDesc}>
         <div className={styles.footerDescHeader}>
-          <span>about ratu oceania raya</span>
+          {/* <span>about ratu oceania raya</span>
           <span>contact</span>
-          <span>call us</span>
+          <span>call us</span> */}
         </div>
         <div className={styles.footerDescHeader}>
           <div className={styles.medsos}>
