@@ -16,7 +16,7 @@ const OurPrincipals = (props) => {
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
     initialSlide: 0,
     arrows: false,
     adaptiveHeight: true,
@@ -59,23 +59,29 @@ const OurPrincipals = (props) => {
           <div className={styles.sliderContainer}>
             <Slider {...settings}>
               {principals.data.map((item, index) => (
-                <div
+                <a
+                  target="_blank"
+                  href={item.website_principal}
+                  rel="noopener noreferrer"
                   key={index}
-                  className={
-                    index === slideIndex ? styles.slide_active : styles.slide
-                  }
                 >
-                  <Image
-                    className={styles.imagePrincipal}
-                    src={item.logo_principal}
-                    width="0"
-                    height="0"
-                    alt={item.slug_principal}
-                    priority
-                    loader={myLoader}
-                    style={{ width: "100%", height: "100%" }}
-                  />
-                </div>
+                  <div
+                    className={
+                      index === slideIndex ? styles.slide_active : styles.slide
+                    }
+                  >
+                    <Image
+                      className={styles.imagePrincipal}
+                      src={item.logo_principal}
+                      width="0"
+                      height="0"
+                      alt={item.slug_principal}
+                      priority
+                      loader={myLoader}
+                      // style={{ width: "100%", height: "100%" }}
+                    />
+                  </div>
+                </a>
               ))}
             </Slider>
           </div>

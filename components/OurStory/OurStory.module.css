@@ -45,3 +45,22 @@
   width: 950px;
   height: 350px;
 }
+
+@media (max-width: 576px) {
+  .title {
+    width: 5rem;
+  }
+
+  .desc {
+    width: 80vw;
+  }
+
+  .imageContainer {
+    padding-top: 2rem;
+  }
+
+  .image {
+    width: 200px;
+    height: 100px;
+  }
+}

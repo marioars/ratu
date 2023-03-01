@@ -6,7 +6,7 @@ import Layout from "../components/Layout/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div>
       <Layout>
         <Component {...pageProps} />
       </Layout>

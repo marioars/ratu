@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Slider from "react-slick";
 import { myLoader } from "../../configs/loader";
+import styles from "./BannerSlider.module.css";
 
 const BannerSlider = (props) => {
   const { banners: data } = props;
@@ -22,17 +23,17 @@ const BannerSlider = (props) => {
     ),
   };
   return (
-    <Slider {...settings}>
+    <Slider {...settings} className={styles.container}>
       {data?.map((item, i) => (
         <div key={i}>
           <Image
+            className={styles.bannerImage}
             src={item.image_banner}
             width="0"
             height="0"
             alt="banner"
             priority
             loader={myLoader}
-            style={{ width: "100%", height: "600px", objectFit: "cover" }}
           />
         </div>
       ))}

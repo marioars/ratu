@@ -23,6 +23,8 @@
   --heightNavbar: 5rem;
   --heightFooter: 15.5rem;
 
+  --paddingMobile: 0 10%;
+
   --roundedSmall: 15px;
   --roundedMedium: 29px;
   --roundedFull: 50%;
@@ -55,4 +57,10 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 12px;
+  }
 }

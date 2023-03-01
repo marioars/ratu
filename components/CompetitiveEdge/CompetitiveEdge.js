@@ -19,9 +19,10 @@ const CompetitiveEdge = (props) => {
     >
       <div className={styles.imageContainer}>
         <Image
+          className={styles.image}
           src={section.image_section}
-          width={320}
-          height={450}
+          width={0}
+          height={0}
           alt="banner1"
           priority
           loader={myLoader}

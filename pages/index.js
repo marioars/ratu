@@ -6,14 +6,14 @@ import CompetitiveEdge from "../components/CompetitiveEdge/CompetitiveEdge";
 import OurPrincipals from "../components/OurPrincipals/OurPrincipals";
 import OurStory from "../components/OurStory/OurStory";
 import Preview from "../components/Preview/Preview";
-import Quote from "../components/Quote/Quote";
 import styles from "../styles/Home.module.css";
 import { server } from "../configs/domain.js";
+import { address } from "../data/address";
 
-export default function Home({ banners, slogan, section, principals }) {
+export default function Home({ banners, section, principals }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <AnimatedPage>
+    <>
       <Head>
         <title>Home - PT Ratu Oceania Raya</title>
         <meta
@@ -23,52 +23,24 @@ export default function Home({ banners, slogan, section, principals }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {!isOpen && <Preview setIsOpen={setIsOpen} />}
-      <div style={{ width: "100vw", textAlign: "center" }}>
-        <BannerSlider banners={banners.data} />
-      </div>
-      {/* <Quote slogan={banners.slogan} /> */}
+      <BannerSlider banners={banners.data} />
       <CompetitiveEdge section={section?.section_competitive} />
       <OurStory section={section?.section_company} />
-      <div style={{ width: "100vw" }}>
-        <OurPrincipals principals={principals} />
-      </div>
+      <OurPrincipals principals={principals} />
       <div className={styles.addressContainer}>
         <div className={styles.titleAddressContainer}>
           <span>Our Office</span>
         </div>
         <div className={styles.addressLocationContainer}>
-          <div className={styles.listAddress}>
-            <h1>Jakarta</h1>
-            <span>
-              Bintaro Trade Center Blok A2 No.9-10 Sektor 7, Bintaro Jaya,
-              Tangerang 15224, Indonesia. Phone: +6221-745 0325 Email:
-              recruitment@ratuoceaniaraya.com
-            </span>
-          </div>
-          <div className={styles.listAddress}>
-            <h1>Yogyakarta</h1>
-            <span>
-              Jl. R.E. Martadinata No.57 RT01/RW02 Wirobrajan, Yogyakarta 55252,
-              Indonesia. Phone: +62274-429 7490 Email: yogya@ratuoceaniaraya.com
-            </span>
-          </div>
-          <div className={styles.listAddress}>
-            <h1>Bali</h1>
-            <span>
-              Jl. Pondok Indah No.18X Denpasar Barat Indonesia. Phone:
-              +62361-939 9851 Email: bali@ratuoceaniaraya.com
-            </span>
-          </div>
-          <div className={styles.listAddress}>
-            <h1>Kuala Lumpur</h1>
-            <span>
-              75, Kompleks Damai, Jalan Datuk Haji Eusoff, Titiwangsa Sentral,
-              50400 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia.
-            </span>
-          </div>
+          {address.map((item) => (
+            <div className={styles.listAddress} key={item.id}>
+              <h1>{item.city}</h1>
+              <span>{item.address}</span>
+            </div>
+          ))}
         </div>
       </div>
-    </AnimatedPage>
+    </>
   );
 }
 

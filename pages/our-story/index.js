@@ -46,16 +46,16 @@ const OurStory = ({ ourStory }) => {
               priority
             />
           </div>
-          <div class={styles.timelineSection}>
-            <div class={styles.timelineItems}>
+          <div className={styles.timelineSection}>
+            <div className={styles.timelineItems}>
               {ourStory.data.story.map((item, i) => (
-                <div key={i} class={styles.timelineItem}>
-                  <div class={styles.timelineDot}></div>
-                  <div class={styles.timelineDate}>
+                <div key={i} className={styles.timelineItem}>
+                  <div className={styles.timelineDot}></div>
+                  <div className={styles.timelineDate}>
                     {item.month_story_company} - {item.year_story_company}
                   </div>
                   <div
-                    class={styles.timelineContent}
+                    className={styles.timelineContent}
                     dangerouslySetInnerHTML={{ __html: item.story_company }}
                   ></div>
                 </div>
