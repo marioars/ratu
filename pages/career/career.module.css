@@ -11,7 +11,6 @@
   justify-content: center;
   text-align: center;
   margin-bottom: 5rem;
-  /* width: 70%; */
 }
 
 .borderContainer {
@@ -72,4 +71,33 @@
   display: flex;
   justify-content: center;
   gap: 3rem;
+}
+
+.image {
+  height: 232px;
+  width: 232px;
+}
+
+@media (max-width: 576px) {
+  .selOpt {
+    width: 11rem;
+  }
+
+  .inputText {
+    width: 14rem;
+  }
+
+  .iconSearch {
+    margin: 0 0;
+  }
+
+  .imageContainer {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .image {
+    height: 80px;
+    width: 80px;
+  }
 }

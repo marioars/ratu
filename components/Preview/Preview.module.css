@@ -57,7 +57,6 @@
   border: 3px solid black;
   cursor: pointer;
   height: 4rem;
-  width: 16rem;
 }
 
 .buttonContainer button:hover {
@@ -72,5 +71,13 @@
   .preview {
     height: 100%;
     width: 100%;
+  }
+
+  .titlePreview span {
+    font-size: var(--sizeXlarge);
+  }
+
+  .buttonContainer button {
+    width: 13rem;
   }
 }

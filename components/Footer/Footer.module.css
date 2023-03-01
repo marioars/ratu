@@ -48,3 +48,23 @@
   display: flex;
   justify-content: flex-end;
 }
+
+@media (max-width: 576px) {
+  .footer {
+    flex-direction: column;
+    padding: 1rem 1rem;
+    height: auto;
+    gap: 1rem;
+  }
+
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: var(--paddingMobile);
+  }
+
+  .footerDescHeader {
+    justify-content: flex-start;
+  }
+}

@@ -5,6 +5,29 @@ import styles from "./career.module.css";
 import { myLoader } from "../../configs/loader";
 import { server } from "../../configs/domain";
 
+const images = [
+  {
+    id: 0,
+    src: "/assets/images/career1.png",
+    alt: "career1",
+  },
+  {
+    id: 1,
+    src: "/assets/images/career2.png",
+    alt: "career2",
+  },
+  {
+    id: 2,
+    src: "/assets/images/career3.png",
+    alt: "career3",
+  },
+  {
+    id: 3,
+    src: "/assets/images/career4.png",
+    alt: "career4",
+  },
+];
+
 const Career = ({ principals }) => {
   return (
     <AnimatedPage>
@@ -53,38 +76,18 @@ const Career = ({ principals }) => {
           </div>
         </div>
         <div className={styles.imageContainer}>
-          <Image
-            src="/assets/images/career1.png"
-            height={232}
-            width={232}
-            alt="career"
-            priority
-            loader={myLoader}
-          />
-          <Image
-            src="/assets/images/career2.png"
-            height={232}
-            width={232}
-            alt="career"
-            priority
-            loader={myLoader}
-          />
-          <Image
-            src="/assets/images/career3.png"
-            height={232}
-            width={232}
-            alt="career"
-            priority
-            loader={myLoader}
-          />
-          <Image
-            src="/assets/images/career4.png"
-            height={232}
-            width={232}
-            alt="career"
-            priority
-            loader={myLoader}
-          />
+          {images.map((image) => (
+            <Image
+              className={styles.image}
+              key={image.id}
+              src={image.src}
+              height={0}
+              width={0}
+              alt={image.alt}
+              priority
+              loader={myLoader}
+            />
+          ))}
         </div>
       </div>
     </AnimatedPage>

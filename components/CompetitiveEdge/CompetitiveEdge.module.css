@@ -11,6 +11,12 @@
   padding-top: 4rem;
 }
 
+.image {
+  width: 320px;
+  height: 450px;
+  object-fit: cover;
+}
+
 .descTitle {
   width: 1rem;
   display: block;
@@ -28,4 +34,31 @@
 
 .description ul li {
   padding-top: 1rem;
+}
+
+@media (max-width: 576px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: var(--paddingMobile);
+    margin: 0;
+  }
+
+  .imageContainer {
+    padding-top: 3rem;
+  }
+
+  .image {
+    width: 200px;
+    height: 250px;
+  }
+
+  .descTitle {
+    width: auto;
+  }
+
+  .description {
+    width: 300px;
+    margin-left: 0;
+  }
 }
