@@ -1,16 +1,40 @@
 .container {
-  height: 80vh;
-  background-color: var(--opacityBlue);
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
+}
+
+.imageContainer {
+  height: 628px;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  background-color: var(--lightWhite);
+}
+
+.flowContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.flowContainer span {
+  text-align: center;
+  font-weight: 600;
+}
+
+.image {
+  height: 232px;
+  width: 232px;
 }
 
 .inputContainer {
   display: flex;
   justify-content: center;
   text-align: center;
-  margin-bottom: 5rem;
+  /* margin: 5rem 0; */
 }
 
 .borderContainer {
@@ -20,6 +44,7 @@
   padding: .1rem;
   position: relative;
   display: flex;
+  bottom: 1.5rem;
 }
 
 .selOpt {
@@ -67,15 +92,57 @@
   cursor: pointer;
 }
 
-.imageContainer {
+.btnSubmit {
   display: flex;
   justify-content: center;
-  gap: 3rem;
 }
 
-.image {
-  height: 232px;
-  width: 232px;
+.buttonJobContainer {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.buttonJobContainer button {
+  outline: none;
+  border: none;
+  background-color: var(--white);
+  border: 3px solid var(--centerBlue);
+  border-radius: var(--roundedXSmall);
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.loader {
+  border: 5px solid var(--lightGrey);
+  border-radius: 50%;
+  border-top: 5px solid var(--centerBlue);
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+}
+
+.spanNoVacancy {
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  font-size: var(--sizeLarge);
+  padding: 3rem;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @media (max-width: 576px) {
@@ -99,5 +166,10 @@
   .image {
     height: 80px;
     width: 80px;
+  }
+
+  .buttonJobContainer {
+    flex-direction: column;
+    align-items: center;
   }
 }

@@ -8,16 +8,30 @@
   --size2Xlarge: 3.5rem;
   --size3Xlarge: 4rem;
 
-  --white: #fff;
-  --opacityBlue: #E4ECF6;
-  --lightBlue: #0062c1;
+  --white: #ffffff;
+  --lightWhite: #FAFAFA;
+  --opacityBlue: #E9EDF2;
   --blue: #0B3A7E;
   --centerBlue: #0063BB;
+  --lightBlue: #0062c1;
   --deepBlue: #05224e;
   --grey: #909090;
   --grey2: #B6B6B7;
   --lightGrey: #EDEDED;
-  --yellow: #f9a604;
+  --opacityGrey: #EFEFEF;
+  --grey3: #CECECE;
+  --green: #53B427;
+
+  /* —white: #FFFFFF;
+  —lightWhite: #FAFAFA;
+  —opacityBlue: #E9EDF2;
+  —blue: #0B3A7E;
+  —centerBlue: #0063BB;
+  —deepBlue: #05224E;
+  —grey: #909090;
+  —grey2: #B6B6B7;
+  —lightGrey: #E7E7E7;
+  —opacityGrey : #EFEFEF; (card principals) */
 
   --paddingContainer: 0 10%;
   --heightNavbar: 5rem;
@@ -25,6 +39,7 @@
 
   --paddingMobile: 0 10%;
 
+  --roundedXSmall: 10px;
   --roundedSmall: 15px;
   --roundedMedium: 29px;
   --roundedFull: 50%;
@@ -64,3 +79,5 @@ a {
     font-size: 12px;
   }
 }
+  /* first_name,last_name,phone,email,dob,sex,domicile_id,province
+  file_cv, file_reference, file_passport, file_seaman_book, file_basic_stc, file_security_atc, file_crowd_cmc */

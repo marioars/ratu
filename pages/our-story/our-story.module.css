@@ -1,24 +1,22 @@
-.container {
-  padding: var(--paddingContainer);
-  background-color: var(--opacityBlue);
-  padding-top: 2rem;
+.ourStoryContainer {
+	background-color: var(--lightWhite);
+	padding: 5rem 0;
+	text-align: center;
 }
 
 .title {
-  margin-bottom: 5rem;
-  width: 30%;
+  margin-bottom: 2.5rem;
 }
 
 .title span {
-  font-size: var(--size2Xlarge);
+	font-size: var(--size2Xlarge);
   display: block;
   text-transform: capitalize;
   line-height: var(--leading);
   font-weight: 700;
 }
-
 .title2 {
-	margin-bottom: 5rem;
+	padding: 2rem 0;
 }
 
 .title2 span{
@@ -32,18 +30,22 @@
 .title2 .desc {
 	font-size: 2rem;
 	font-weight: 500;
-	width: 80%;
+	padding: 0 18%;
 }
 
 .title2 .desc2 {
 	font-size: 2rem;
 	font-weight: 500;
-	width: 95%;
+	padding: 0 13%;
+}
+
+.timelineContainer {
+	background-color: var(--opacityBlue);
+	padding-top: 5rem;
 }
 
 .shipContainer {
   text-align: center;
-  margin-bottom: 1rem;
 }
 
 .ship {
@@ -55,7 +57,7 @@
 /* timeline */
 .timelineSection{
 	min-height: 100vh;
-	padding: 100px 15px;
+	padding: 50px 15px;
 }
 .timelineItems{
 	max-width: 1000px;
@@ -134,7 +136,6 @@
 
 .anchorContainer {
   text-align: center;
-  padding-top: 2rem;
   padding-bottom: 5rem;
 }
 
