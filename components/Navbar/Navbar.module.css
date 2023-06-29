@@ -73,13 +73,17 @@
 .container .navBtn {
   padding: 5px;
   cursor: pointer;
-  background: transparent;
+  background: var(--white);
   border: none;
   outline: none;
   color: var(--textColor);
   visibility: hidden;
   opacity: 0;
   font-size: 1.8rem;
+}
+
+.container .navBtn {
+  display: none;
 }
 
 .container div,
@@ -90,6 +94,7 @@
 
 @media only screen and (max-width: 1024px) {
   .container .navBtn {
+    display: inline;
     visibility: visible;
     opacity: 1;
   }

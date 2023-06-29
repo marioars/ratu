@@ -1,0 +1,272 @@
+.formContainer {
+  padding: var(--paddingContainer);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  /* margin: 2rem 0; */
+  background-color: var(--lightWhite);
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  /* align-items: center; */
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.flexList {
+  width: 100%;
+}
+
+.flexList .inputFile {
+  padding: .5rem;
+  width: 100%;
+}
+
+.flexList .displayNone {
+  color: var(--lightWhite)
+}
+
+
+.flexList .tattooLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.flexListContainerRadio {
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.flexListRadio input {
+  margin-right: 1rem;
+}
+
+.flexListContainer {
+  margin: 1rem;
+}
+
+.flexListContainer2 {
+  margin: 1rem;
+}
+
+.topContainer {
+  margin-top: 2rem;
+}
+
+.educationContainer {
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.educationList {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.educationList:first-child {
+  width: 45%;
+}
+
+.educationList input {
+  display: block;
+  margin: .5rem 0;
+  padding: 0 .5rem;
+  height: 40px;
+  background-color: var(--opacityGrey);
+  border: none;
+  border-radius: var(--roundedXSmall);
+  color: var(--grey2);
+}
+
+.flexListContainer input {
+  display: block;
+  margin: .5rem 0;
+  background-color: var(--opacityGrey);
+  border: none;
+  border-radius: var(--roundedXSmall);
+  color: var(--grey2);
+}
+
+.flexList .selectBox {
+  display: block;
+  margin: .5rem 0;
+  background-color: var(--opacityGrey);
+  border: none;
+  border-radius: var(--roundedXSmall);
+  height: 40px;
+  width: 535px;
+  padding: 0 .5rem;
+}
+
+.flexListContainer input::-webkit-file-upload-button {
+  border: none;
+  background-color: var(--grey3);
+  color: var(--white);
+  border-radius: 5px;
+  height: 30px;
+  cursor: pointer;;
+}
+
+.flexContainer input{
+  display: block;
+  margin: .5rem 0;
+  background-color: var(--opacityGrey);
+  border: none;
+  border-radius: var(--roundedXSmall);
+  height: 40px;
+  width: 535px;
+  padding: 0 .5rem;
+}
+
+.flexListContainer .nik {
+  display: block;
+  margin: .5rem 0;
+  border: none;
+  border-radius: var(--roundedXSmall);
+  height: 40px;
+  width: 100%;
+  padding: 0 .5rem;
+  color: unset;
+}
+
+.formContainer label {
+  font-weight: 600;
+}
+
+.formContainer select {
+  display: block;
+}
+
+.gridContainer {
+  display: flex;
+  margin: 1rem;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.leftContainer {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.leftContainer textarea {
+  resize: none;
+  border: none;
+  background-color: var(--opacityGrey);
+  border-radius: var(--roundedXSmall);
+  padding: 1rem;
+  margin: .5rem 0;
+}
+
+.rightContainer {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: auto;
+}
+
+.rightContainer .selectBox {
+  display: block;
+  margin: .5rem 0;
+  background-color: var(--opacityGrey);
+  border: none;
+  border-radius: var(--roundedXSmall);
+  height: 40px;
+  width: 535px;
+  padding: 0 .5rem;
+}
+
+.submitContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1rem;
+}
+
+.loader {
+  border: 5px solid var(--lightGrey);
+  border-radius: 50%;
+  border-top: 5px solid var(--green);
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+.btnSubmit {
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  padding: .5rem 1.5rem;
+  border-radius: 5px;
+  font-size: var(--sizeSmall);
+  cursor: pointer;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 576px) {
+  .flexContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: .2rem;
+    gap: .5rem;
+  }
+
+  .flexListContainer {
+    margin: 0;
+  }
+
+  .flexListContainer2 {
+    margin: 0;
+  }
+
+  .educationContainer {
+    margin: 0;
+  }
+
+  .flexList .selectBox {
+    width: 310px;
+  }
+
+  .flexContainer input{
+    width: 310px;
+  }
+
+  .gridContainer {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .leftContainer {
+    width: 100%;
+  }
+
+  .rightContainer {
+    width: 100%;
+  }
+
+  .rightContainer .selectBox {
+    width: 310px;
+  }
+}

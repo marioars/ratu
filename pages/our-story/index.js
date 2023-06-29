@@ -20,58 +20,62 @@ const OurStory = ({ ourStory }) => {
       </Head>
       <div className={styles.container}>
         <AnimatedPage>
-          <div className={styles.title}>
-            <span>{ourStory.data.title_section}</span>
-          </div>
-          <div className={styles.title2}>
-            <span>Vision</span>
-            <span className={styles.desc}>
-              {ourStory.vision_mission?.vision}
-            </span>
-          </div>
-          <div className={styles.title2}>
-            <span>Mission</span>
-            <span className={styles.desc2}>
-              {ourStory.vision_mission?.mission}
-            </span>
-          </div>
-          <div className={styles.shipContainer}>
-            <Image
-              src={ship}
-              width={0}
-              height={0}
-              className={styles.ship}
-              loader={myLoader}
-              alt="ship"
-              priority
-            />
-          </div>
-          <div className={styles.timelineSection}>
-            <div className={styles.timelineItems}>
-              {ourStory.data.story.map((item, i) => (
-                <div key={i} className={styles.timelineItem}>
-                  <div className={styles.timelineDot}></div>
-                  <div className={styles.timelineDate}>
-                    {item.month_story_company} - {item.year_story_company}
-                  </div>
-                  <div
-                    className={styles.timelineContent}
-                    dangerouslySetInnerHTML={{ __html: item.story_company }}
-                  ></div>
-                </div>
-              ))}
+          <div className={styles.ourStoryContainer}>
+            <div className={styles.title}>
+              <span>{ourStory.data.title_section}</span>
+            </div>
+            <div className={styles.title2}>
+              <span>Vision</span>
+              <span className={styles.desc}>
+                {ourStory.vision_mission?.vision}
+              </span>
+            </div>
+            <div className={styles.title2}>
+              <span>Mission</span>
+              <span className={styles.desc2}>
+                {ourStory.vision_mission?.mission}
+              </span>
             </div>
           </div>
-          <div className={styles.anchorContainer}>
-            <Image
-              src={anchor}
-              width={0}
-              height={0}
-              className={styles.anchor}
-              loader={myLoader}
-              alt="ship"
-              priority
-            />
+          <div className={styles.timelineContainer}>
+            <div className={styles.shipContainer}>
+              <Image
+                src={ship}
+                width={0}
+                height={0}
+                className={styles.ship}
+                loader={myLoader}
+                alt="ship"
+                priority
+              />
+            </div>
+            <div className={styles.timelineSection}>
+              <div className={styles.timelineItems}>
+                {ourStory.data.story.map((item, i) => (
+                  <div key={i} className={styles.timelineItem}>
+                    <div className={styles.timelineDot}></div>
+                    <div className={styles.timelineDate}>
+                      {item.month_story_company} - {item.year_story_company}
+                    </div>
+                    <div
+                      className={styles.timelineContent}
+                      dangerouslySetInnerHTML={{ __html: item.story_company }}
+                    ></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={styles.anchorContainer}>
+              <Image
+                src={anchor}
+                width={0}
+                height={0}
+                className={styles.anchor}
+                loader={myLoader}
+                alt="ship"
+                priority
+              />
+            </div>
           </div>
         </AnimatedPage>
       </div>

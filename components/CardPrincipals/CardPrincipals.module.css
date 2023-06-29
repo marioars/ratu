@@ -1,5 +1,7 @@
 .container {
-  border: 2px solid var(--lightBlue);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(207,207,207,1);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(207,207,207,1);
+  box-shadow: 0px 2px 5px 0px rgba(207,207,207,1);
   width: 365px;
   min-height: 658px;
   border-radius: var(--roundedSmall);
