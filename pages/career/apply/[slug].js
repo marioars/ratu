@@ -68,19 +68,8 @@ const Apply = ({ detailJob, domicile }) => {
         from: "",
         end: "",
       },
-      {
-        type_edu: "Add for higher levels (Optional)",
-        name_edu: "",
-        from: "",
-        end: "",
-      },
     ],
     working_experience: [
-      {
-        name_experience: "",
-        from: "",
-        end: "",
-      },
       {
         name_experience: "",
         from: "",
