@@ -11,6 +11,7 @@ const Footer = () => {
           height={135}
           width={132}
           alt="ratu_oceania_raya"
+          priority
         />
       </div>
       <div className={styles.footerDesc}>

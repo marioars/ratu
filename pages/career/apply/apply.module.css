@@ -214,6 +214,32 @@
   cursor: pointer;
 }
 
+.buttonDelete {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.buttonContainer {
+  margin: 1rem;
+}
+
+.buttonContainer button {
+  height: 2rem;
+  border: none;
+  border-radius: var(--roundedXSmall);
+  background-color: var(--centerBlue);
+  color: var(--white);
+  text-transform: capitalize;
+  cursor: pointer;
+  padding: 0 1.5rem;
+}
+
+.errorMessage {
+  color: red;
+}
+
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }

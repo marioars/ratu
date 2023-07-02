@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import React, { useCallback, useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { server } from "../../../configs/domain";
@@ -67,19 +68,8 @@ const Apply = ({ detailJob, domicile }) => {
         from: "",
         end: "",
       },
-      {
-        type_edu: "Add for higher levels (Optional)",
-        name_edu: "",
-        from: "",
-        end: "",
-      },
     ],
     working_experience: [
-      {
-        name_experience: "",
-        from: "",
-        end: "",
-      },
       {
         name_experience: "",
         from: "",
@@ -116,6 +106,8 @@ const Apply = ({ detailJob, domicile }) => {
     },
   });
 
+  const today = new Date().toISOString().split("T")[0];
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -146,6 +138,24 @@ const Apply = ({ detailJob, domicile }) => {
     });
   };
 
+  const addEducation = (e) => {
+    e.preventDefault();
+    const updatedFormData = { ...formData };
+    updatedFormData.educational_background.push({
+      type_edu: "Add for higher levels (Optional)",
+      name_edu: "",
+      from: "",
+      end: "",
+    });
+    setFormData(updatedFormData);
+  };
+
+  const removeEducation = (index) => {
+    const updatedFormData = { ...formData };
+    updatedFormData.educational_background.splice(index, 1);
+    setFormData(updatedFormData);
+  };
+
   const handleWorkChange = (index, field, value) => {
     const updatedWorkingExperience = [...formData.working_experience];
     updatedWorkingExperience[index][field] = value;
@@ -155,6 +165,22 @@ const Apply = ({ detailJob, domicile }) => {
     });
   };
 
+  const addWorkExperience = (e) => {
+    e.preventDefault();
+    const updatedFormData = { ...formData };
+    updatedFormData.working_experience.push({
+      name_experience: "",
+      from: "",
+      end: "",
+    });
+    setFormData(updatedFormData);
+  };
+
+  const removeWorkExperience = (index) => {
+    const updatedFormData = { ...formData };
+    updatedFormData.working_experience.splice(index, 1);
+    setFormData(updatedFormData);
+  };
   const handleSelectChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -584,6 +610,7 @@ const Apply = ({ detailJob, domicile }) => {
                 onChange={(e) =>
                   handleEducationChange(index, "from", e.target.value)
                 }
+                max={today}
               />
             </div>
             <div className={styles.educationList}>
@@ -594,17 +621,34 @@ const Apply = ({ detailJob, domicile }) => {
                 onChange={(e) =>
                   handleEducationChange(index, "end", e.target.value)
                 }
+                max={today}
               />
             </div>
+            {edu.type_edu === "Add for higher levels (Optional)" && (
+              <button
+                className={styles.buttonDelete}
+                onClick={() => removeEducation(index)}
+              >
+                <Image
+                  src="/assets/delete-icon.png"
+                  width={20}
+                  height={20}
+                  alt="delete"
+                />
+              </button>
+            )}
           </div>
         ))}
+      </div>
+      <div className={styles.buttonContainer}>
+        <button onClick={addEducation}>Add Educational Background</button>
       </div>
       <div className={styles.topContainer}>
         {formData.working_experience.map((work, index) => (
           <div className={styles.educationContainer} key={index}>
             <div className={styles.educationList}>
               <label>
-                {index === formData.working_experience.length - 1
+                {index !== 0
                   ? "Add more experience (Optional)"
                   : "Working Experience"}
               </label>
@@ -625,6 +669,7 @@ const Apply = ({ detailJob, domicile }) => {
                 onChange={(e) =>
                   handleWorkChange(index, "from", e.target.value)
                 }
+                max={today}
               />
             </div>
             <div className={styles.educationList}>
@@ -633,10 +678,27 @@ const Apply = ({ detailJob, domicile }) => {
                 type="date"
                 value={work.end}
                 onChange={(e) => handleWorkChange(index, "end", e.target.value)}
+                max={today}
               />
             </div>
+            {index !== 0 && (
+              <button
+                className={styles.buttonDelete}
+                onClick={() => removeWorkExperience(index)}
+              >
+                <Image
+                  src="/assets/delete-icon.png"
+                  width={20}
+                  height={20}
+                  alt="delete"
+                />
+              </button>
+            )}
           </div>
         ))}
+      </div>
+      <div className={styles.buttonContainer}>
+        <button onClick={addWorkExperience}>Add Working Experience</button>
       </div>
       <div className={styles.topContainer}>
         <div className={styles.flexListContainer}>
