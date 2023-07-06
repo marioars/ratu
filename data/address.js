@@ -9,7 +9,7 @@ export const address = [
     id: "1",
     city: "Yogyakarta",
     address:
-      "Jl. R.E. Martadinata No.57 RT01/RW02 Wirobrajan, Yogyakarta 55252 Indonesia. Phone: +62274-429 7490 Email: yogya@ratuoceaniaraya.com",
+      "Jl. R.E. Martadinata No.57 RT01/RW02 Wirobrajan, Yogyakarta 55252 Indonesia. Phone: +62274-429 7460 Email: yogya@ratuoceaniaraya.com",
   },
   {
     id: "2",
