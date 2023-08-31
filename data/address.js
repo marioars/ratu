@@ -21,6 +21,6 @@ export const address = [
     id: "3",
     city: "Kuala Lumpur",
     address:
-      "75, Kompleks Damai, Jalan Datuk Haji Eusoff, Titiwangsa Sentral, 50400 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia. Email: malaysia@ratuoceaniaraya.com",
+      "Agensi Pekerjaan Ratu Oceania Raya Sdn Bhd 26-1, Wisma UOA II, Jalan Pinang, 50450 Kuala Lumpur, Malaysia. Email: malaysia@ratuoceaniaraya.com",
   },
 ];
