@@ -5,11 +5,13 @@ import styles from "./Preview.module.css";
 const Preview = ({ setIsOpen }) => {
   const previewRef = useRef();
   const router = useRouter();
+
   const handleClick = () => {
     setTimeout(() => {
       setIsOpen(true);
     }, 1000);
   };
+
   let timer;
   const handleClickOffer = () => {
     router.push("/career");
@@ -17,6 +19,7 @@ const Preview = ({ setIsOpen }) => {
       setIsOpen(true);
     }, 1000);
   };
+
   useEffect(() => {
     return () => {
       clearTimeout(timer);
@@ -25,7 +28,7 @@ const Preview = ({ setIsOpen }) => {
 
   return (
     <div className={styles.preview} ref={previewRef}>
-      <video autoPlay loop muted className={styles.videoPreview}>
+      <video autoPlay loop muted playsInline className={styles.videoPreview}>
         <source
           src="https://storage.googleapis.com/exqueen/video/video-opening-web.mp4"
           type="video/mp4"
@@ -44,6 +47,14 @@ const Preview = ({ setIsOpen }) => {
           <button className={styles.explore} onClick={handleClickOffer}>
             careers at sea
           </button>
+          <a
+            className={styles.btn_training}
+            href="https://reinedesmers.ac/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            training center
+          </a>
         </div>
       </div>
     </div>
