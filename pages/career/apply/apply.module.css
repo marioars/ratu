@@ -23,6 +23,7 @@
 .flexList .inputFile {
   padding: .5rem;
   width: 100%;
+  border: 1px solid var(--grey);
 }
 
 .flexList .displayNone {
@@ -65,6 +66,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: .5rem;
 }
 
 .educationList {
@@ -74,7 +76,7 @@
 }
 
 .educationList:first-child {
-  width: 45%;
+  width: 35%;
 }
 
 .educationList input {
@@ -82,25 +84,26 @@
   margin: .5rem 0;
   padding: 0 .5rem;
   height: 40px;
-  background-color: var(--opacityGrey);
+  background-color: var(--white);
   border: none;
   border-radius: var(--roundedXSmall);
-  color: var(--grey2);
+  border: 1px solid var(--grey);
+  /* color: var(--grey2); */
 }
 
 .flexListContainer input {
   display: block;
   margin: .5rem 0;
-  background-color: var(--opacityGrey);
+  background-color: var(--white);
   border: none;
   border-radius: var(--roundedXSmall);
-  color: var(--grey2);
+  /* color: var(--grey2); */
 }
 
 .flexList .selectBox {
   display: block;
   margin: .5rem 0;
-  background-color: var(--opacityGrey);
+  background-color: var(--white);
   border: none;
   border-radius: var(--roundedXSmall);
   height: 40px;
@@ -120,9 +123,10 @@
 .flexContainer input{
   display: block;
   margin: .5rem 0;
-  background-color: var(--opacityGrey);
+  background-color: var(--white);
   border: none;
   border-radius: var(--roundedXSmall);
+  border: 1px solid var(--grey);
   height: 40px;
   width: 535px;
   padding: 0 .5rem;
@@ -133,6 +137,7 @@
   margin: .5rem 0;
   border: none;
   border-radius: var(--roundedXSmall);
+  border: 1px solid var(--grey);
   height: 40px;
   width: 100%;
   padding: 0 .5rem;
@@ -163,8 +168,9 @@
 .leftContainer textarea {
   resize: none;
   border: none;
-  background-color: var(--opacityGrey);
+  background-color: var(--white);
   border-radius: var(--roundedXSmall);
+  border: 1px solid var(--grey);
   padding: 1rem;
   margin: .5rem 0;
 }
@@ -180,9 +186,34 @@
 .rightContainer .selectBox {
   display: block;
   margin: .5rem 0;
-  background-color: var(--opacityGrey);
+  background-color: var(--white);
   border: none;
   border-radius: var(--roundedXSmall);
+  border: 1px solid var(--grey);
+  height: 40px;
+  width: 535px;
+  padding: 0 .5rem;
+}
+
+.rightContainer input {
+  display: block;
+  margin: .5rem 0;
+  background-color: var(--white);
+  border: none;
+  border-radius: var(--roundedXSmall);
+  border: 1px solid var(--grey);
+  height: 40px;
+  width: 535px;
+  padding: 0 .5rem;
+}
+
+.selectBox2 {
+  display: block;
+  margin: .5rem 0;
+  background-color: var(--white);
+  border: none;
+  border-radius: var(--roundedXSmall);
+  border: 1px solid var(--grey);
   height: 40px;
   width: 535px;
   padding: 0 .5rem;

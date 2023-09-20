@@ -1,14 +1,25 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { server } from "../../../configs/domain";
 import { myLoader } from "../../../configs/loader";
 import styles from "./jobDetail.module.css";
 
 const JobDetail = ({ detailJob }) => {
   const router = useRouter();
+  const [isApplying, setIsApplying] = useState(false);
+
   const handleOpen = useCallback(() => {
-    router.push(`/career/apply/${detailJob.data.slug_career_principal}`);
+    setIsApplying(true);
+    setTimeout(async () => {
+      try {
+        router.push(`/career/apply/${detailJob.data.slug_career_principal}`);
+      } catch (error) {
+        console.error("Terjadi kesalahan", error);
+      } finally {
+        setIsApplying(false);
+      }
+    }, 1000);
   }, [router, detailJob]);
   return (
     <>
@@ -64,7 +75,9 @@ const JobDetail = ({ detailJob }) => {
           dangerouslySetInnerHTML={{ __html: detailJob.data.requirement }}
         ></div>
         <div className={styles.buttonContainer}>
-          <button onClick={handleOpen}>Apply</button>
+          <button onClick={handleOpen}>
+            {isApplying ? <div className={styles.loader}></div> : "Apply"}
+          </button>
         </div>
       </div>
       {/* {openModal && (

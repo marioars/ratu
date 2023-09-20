@@ -1,38 +1,15 @@
-import axios from "axios";
-import { useRouter } from "next/router";
 import Image from "next/image";
-import React, { useCallback, useRef, useState } from "react";
+import { useRouter } from "next/router";
+import React, { useRef, useState, useCallback } from "react";
+import axios from "axios";
 import Swal from "sweetalert2";
+
+import styles from "./apply.module.css";
 import { server } from "../../../configs/domain";
 import convertImage from "../../../helpers/base64";
-import styles from "./apply.module.css";
-
-const data = [
-  {
-    id: 1,
-    province: "Jakarta",
-  },
-  {
-    id: 2,
-    province: "Yogyakarta",
-  },
-  {
-    id: 3,
-    province: "Bali",
-  },
-];
 
 const Apply = ({ detailJob, domicile }) => {
-  // const [hasTattoo, setHasTattoo] = useState(false);
-  // const [visibleWithShortSleeves, setVisibleWithShortSleeves] = useState(false);
-
-  const passportRef = useRef();
-  const seamanRef = useRef();
-  const visaRef = useRef();
-  const basicSTRef = useRef();
-  const safetyRef = useRef();
-  const crowdRef = useRef();
-  const crisisRef = useRef();
+  const photoRef = useRef();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -72,35 +49,47 @@ const Apply = ({ detailJob, domicile }) => {
     working_experience: [
       {
         name_experience: "",
+        job_position: "",
         from: "",
         end: "",
       },
     ],
     file_passport: {
-      nama_file: "",
-      base64: "",
+      number: "",
+      date_of_issue: "",
+      date_of_expiry: "",
     },
     file_seaman_book: {
-      nama_file: "",
-      base64: "",
+      number: "",
+      date_of_issue: "",
+      date_of_expiry: "",
     },
     file_c1d_visa: {
-      nama_file: "",
-      base64: "",
+      number: "",
+      date_of_issue: "",
+      date_of_expiry: "",
     },
     file_certificate_basic_st: {
-      nama_file: "",
-      base64: "",
+      number: "",
+      date_of_issue: "",
+      date_of_expiry: "",
     },
     file_certificate_safety_at: {
-      nama_file: "",
-      base64: "",
+      number: "",
+      date_of_issue: "",
+      date_of_expiry: "",
     },
     file_certificate_crowd_m: {
-      nama_file: "",
-      base64: "",
+      number: "",
+      date_of_issue: "",
+      date_of_expiry: "",
     },
     file_certificate_crisis_mhb: {
+      number: "",
+      date_of_issue: "",
+      date_of_expiry: "",
+    },
+    image_profile: {
       nama_file: "",
       base64: "",
     },
@@ -170,6 +159,7 @@ const Apply = ({ detailJob, domicile }) => {
     const updatedFormData = { ...formData };
     updatedFormData.working_experience.push({
       name_experience: "",
+      job_position: "",
       from: "",
       end: "",
     });
@@ -181,6 +171,7 @@ const Apply = ({ detailJob, domicile }) => {
     updatedFormData.working_experience.splice(index, 1);
     setFormData(updatedFormData);
   };
+
   const handleSelectChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -201,81 +192,19 @@ const Apply = ({ detailJob, domicile }) => {
       base64: null,
     };
     let result = {
-      file_passport: defaultFile,
-      file_seaman_book: defaultFile,
-      file_c1d_visa: defaultFile,
-      file_certificate_basic_st: defaultFile,
-      file_certificate_safety_at: defaultFile,
-      file_certificate_crowd_m: defaultFile,
-      file_certificate_crisis_mhb: defaultFile,
+      image_profile: defaultFile,
     };
 
-    const passport = passportRef.current.files[0];
-    const seaman = seamanRef.current.files[0];
-    const visa = visaRef.current.files[0];
-    const basicST = basicSTRef.current.files[0];
-    const safety = safetyRef.current.files[0];
-    const crowd = crowdRef.current.files[0];
-    const crisis = crisisRef.current.files[0];
-    if (passport) {
-      const base64Passport = await convertFileToBase64(passport);
-      result.file_passport = {
-        nama_file: passport.name,
+    const photo = photoRef.current.files[0];
+    if (photo) {
+      const base64Passport = await convertFileToBase64(photo);
+      result.image_profile = {
+        nama_file: photo.name,
         base64: base64Passport,
       };
     }
-    if (seaman) {
-      const base64Seaman = await convertFileToBase64(seaman);
-      result.file_seaman_book = {
-        nama_file: seaman.name,
-        base64: base64Seaman,
-      };
-    }
-    if (visa) {
-      const base64Visa = await convertFileToBase64(visa);
-      result.file_c1d_visa = {
-        nama_file: visa.name,
-        base64: base64Visa,
-      };
-    }
-    if (basicST) {
-      const base64BasicST = await convertFileToBase64(basicST);
-      result.file_certificate_basic_st = {
-        nama_file: basicST.name,
-        base64: base64BasicST,
-      };
-    }
-    if (safety) {
-      const base64Safety = await convertFileToBase64(safety);
-      result.file_certificate_safety_at = {
-        nama_file: safety.name,
-        base64: base64Safety,
-      };
-    }
-    if (crowd) {
-      const base64Crowd = await convertFileToBase64(crowd);
-      result.file_certificate_crowd_m = {
-        nama_file: crowd.name,
-        base64: base64Crowd,
-      };
-    }
-    if (crisis) {
-      const base64Crisis = await convertFileToBase64(crisis);
-      result.file_certificate_crisis_mhb = {
-        nama_file: crisis.name,
-        base64: base64Crisis,
-      };
-    }
     return result;
-  }, [
-    passportRef,
-    seamanRef,
-    visaRef,
-    basicSTRef,
-    safetyRef,
-    crowdRef,
-    crisisRef,
-  ]);
+  }, [photoRef]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -304,13 +233,53 @@ const Apply = ({ detailJob, domicile }) => {
         })),
         working_experience: formData.working_experience.map((work) => ({
           name_experience: work.name_experience,
+          job_position: work.job_position,
           from: work.from,
           end: work.end,
         })),
+        file_passport: {
+          number: formData.file_passport.number,
+          date_of_issue: formData.file_passport.date_of_issue,
+          date_of_expiry: formData.file_passport.date_of_expiry,
+        },
+        file_seaman_book: {
+          number: formData.file_seaman_book.number,
+          date_of_issue: formData.file_seaman_book.date_of_issue,
+          date_of_expiry: formData.file_seaman_book.date_of_expiry,
+        },
+        file_c1d_visa: {
+          number: formData.file_c1d_visa.number,
+          date_of_issue: formData.file_c1d_visa.date_of_issue,
+          date_of_expiry: formData.file_c1d_visa.date_of_expiry,
+        },
+        file_certificate_basic_st: {
+          number: formData.file_certificate_basic_st.number,
+          date_of_issue: formData.file_certificate_basic_st.date_of_issue,
+          date_of_expiry: formData.file_certificate_basic_st.date_of_expiry,
+        },
+        file_certificate_safety_at: {
+          number: formData.file_certificate_safety_at.number,
+          date_of_issue: formData.file_certificate_safety_at.date_of_issue,
+          date_of_expiry: formData.file_certificate_safety_at.date_of_expiry,
+        },
+        file_certificate_crowd_m: {
+          number: formData.file_certificate_crowd_m.number,
+          date_of_issue: formData.file_certificate_crowd_m.date_of_issue,
+          date_of_expiry: formData.file_certificate_crowd_m.date_of_expiry,
+        },
+        file_certificate_crisis_mhb: {
+          number: formData.file_certificate_crisis_mhb.number,
+          date_of_issue: formData.file_certificate_crisis_mhb.date_of_issue,
+          date_of_expiry: formData.file_certificate_crisis_mhb.date_of_expiry,
+        },
         ...files,
+        // image_profile: {
+        //   nama_file: "test.png",
+        //   base64: "test",
+        // },
       };
       const { data } = await axios.post(
-        `${server}/api/v1/career/apply`,
+        `${server}/api/v1/career/apply/v3`,
         requestBody
       );
       if (data) {
@@ -341,30 +310,41 @@ const Apply = ({ detailJob, domicile }) => {
           educational_background: [],
           working_experience: [],
           file_passport: {
-            nama_file: "",
-            base64: "",
+            number: "",
+            date_of_issue: "",
+            date_of_expiry: "",
           },
           file_seaman_book: {
-            nama_file: "",
-            base64: "",
+            number: "",
+            date_of_issue: "",
+            date_of_expiry: "",
           },
           file_c1d_visa: {
-            nama_file: "",
-            base64: "",
+            number: "",
+            date_of_issue: "",
+            date_of_expiry: "",
           },
           file_certificate_basic_st: {
-            nama_file: "",
-            base64: "",
+            number: "",
+            date_of_issue: "",
+            date_of_expiry: "",
           },
           file_certificate_safety_at: {
-            nama_file: "",
-            base64: "",
+            number: "",
+            date_of_issue: "",
+            date_of_expiry: "",
           },
           file_certificate_crowd_m: {
-            nama_file: "",
-            base64: "",
+            number: "",
+            date_of_issue: "",
+            date_of_expiry: "",
           },
           file_certificate_crisis_mhb: {
+            number: "",
+            date_of_issue: "",
+            date_of_expiry: "",
+          },
+          image_profile: {
             nama_file: "",
             base64: "",
           },
@@ -372,6 +352,11 @@ const Apply = ({ detailJob, domicile }) => {
       }
     } catch (error) {
       setLoading(false);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong! Check your input again",
+      });
       console.error("failed to submit form", error);
     }
   };
@@ -380,7 +365,7 @@ const Apply = ({ detailJob, domicile }) => {
     <form className={styles.formContainer} onSubmit={handleSubmit}>
       <div className={styles.flexListContainer}>
         <div className={styles.flexList}>
-          <label htmlFor="nik">ID Number(NIK) / Passport Number</label>
+          <label htmlFor="nik">ID Number(NIK)</label>
           <input
             className={styles.nik}
             onChange={handleInputChange}
@@ -461,16 +446,16 @@ const Apply = ({ detailJob, domicile }) => {
         <div className={styles.flexList}>
           <label htmlFor="sex">Gender</label>
           <select
-            className={styles.selectBox}
+            className={styles.selectBox2}
             value={formData.sex || ""}
             onChange={handleSelectChange}
             id="sex"
             name="sex"
             required
           >
-            <option value="">Pilih Jenis Kelamin</option>
-            <option value={1}>Laki-laki</option>
-            <option value={2}>Perempuan</option>
+            <option value="">Select Your Gender</option>
+            <option value={1}>Male</option>
+            <option value={2}>Female</option>
           </select>
         </div>
       </div>
@@ -488,7 +473,7 @@ const Apply = ({ detailJob, domicile }) => {
         </div>
         <div className={styles.rightContainer}>
           <div>
-            <label htmlFor="domicile_id">Domicile</label>
+            <label htmlFor="domicile_id">Country</label>
             <select
               className={styles.selectBox}
               value={formData.domicile_id || ""}
@@ -497,7 +482,7 @@ const Apply = ({ detailJob, domicile }) => {
               name="domicile_id"
               required
             >
-              <option value="">Select Domicile</option>
+              <option value="">Select Country</option>
               {domicile?.data?.map((item) => (
                 <option key={item.id_domicile} value={item.id_domicile}>
                   {item.name_country}
@@ -507,21 +492,15 @@ const Apply = ({ detailJob, domicile }) => {
           </div>
           <div>
             <label htmlFor="province">Province</label>
-            <select
-              className={styles.selectBox}
-              value={formData.province || ""}
-              onChange={handleSelectChange}
+            <input
+              type="text"
+              onChange={handleInputChange}
               id="province"
               name="province"
+              value={formData.province}
+              placeholder="Province"
               required
-            >
-              <option value="">Select Province</option>
-              {data.map((item, i) => (
-                <option key={i} value={item.province}>
-                  {item.province}
-                </option>
-              ))}
-            </select>
+            />
           </div>
         </div>
       </div>
@@ -658,7 +637,17 @@ const Apply = ({ detailJob, domicile }) => {
                 onChange={(e) =>
                   handleWorkChange(index, "name_experience", e.target.value)
                 }
-                placeholder="Name of Employer / Job Position"
+                placeholder="Name of Employer"
+              />
+            </div>
+            <div className={styles.educationList}>
+              <label>Job Position:</label>
+              <input
+                type="text"
+                value={work.job_position}
+                onChange={(e) =>
+                  handleWorkChange(index, "job_position", e.target.value)
+                }
               />
             </div>
             <div className={styles.educationList}>
@@ -701,106 +690,264 @@ const Apply = ({ detailJob, domicile }) => {
         <button onClick={addWorkExperience}>Add Working Experience</button>
       </div>
       <div className={styles.topContainer}>
-        <div className={styles.flexListContainer}>
-          <div className={styles.flexList}>
-            <label htmlFor="file_passport">Upload Passport (Optional)</label>
+        <div className={styles.educationContainer}>
+          <div className={styles.educationList}>
+            <label>Passport</label>
             <input
-              className={styles.inputFile}
-              accept=".pdf, .doc, .docx"
-              type="file"
+              onChange={handleInputChange}
+              type="number"
               id="file_passport"
               name="file_passport"
-              ref={passportRef}
-              placeholder="Browse"
+              value={formData.file_passport.number}
+              placeholder="Number"
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of issue:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_passport"
+              name="file_passport"
+              value={formData.file_passport.date_of_issue}
+              max={today}
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of expiry:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_passport"
+              name="file_passport"
+              value={formData.file_passport.date_of_expiry}
+              min={today}
             />
           </div>
         </div>
-        <div className={styles.flexListContainer}>
-          <div className={styles.flexList}>
-            <label htmlFor="file_seaman_book">
-              Upload Seaman Book (Optional)
-            </label>
+        <div className={styles.educationContainer}>
+          <div className={styles.educationList}>
+            <label>Seaman Book</label>
             <input
-              className={styles.inputFile}
-              accept=".pdf, .doc, .docx"
-              type="file"
+              onChange={handleInputChange}
+              type="number"
               id="file_seaman_book"
               name="file_seaman_book"
-              ref={seamanRef}
+              value={formData.file_seaman_book.number}
+              placeholder="Number"
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of issue:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_seaman_book"
+              name="file_seaman_book"
+              value={formData.file_seaman_book.date_of_issue}
+              max={today}
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of expiry:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_seaman_book"
+              name="file_seaman_book"
+              value={formData.file_seaman_book.date_of_expiry}
+              min={today}
             />
           </div>
         </div>
-        <div className={styles.flexListContainer}>
-          <div className={styles.flexList}>
-            <label htmlFor="file_c1d_visa">Upload C1D Visa (Optional)</label>
+        <div className={styles.educationContainer}>
+          <div className={styles.educationList}>
+            <label>C1D Visa</label>
             <input
-              className={styles.inputFile}
-              accept=".pdf, .doc, .docx"
-              type="file"
+              onChange={handleInputChange}
+              type="number"
               id="file_c1d_visa"
               name="file_c1d_visa"
-              ref={visaRef}
+              value={formData.file_c1d_visa.number}
+              placeholder="Number"
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of issue:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_c1d_visa"
+              name="file_c1d_visa"
+              value={formData.file_c1d_visa.date_of_issue}
+              max={today}
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of expiry:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_c1d_visa"
+              name="file_c1d_visa"
+              value={formData.file_c1d_visa.date_of_expiry}
+              min={today}
             />
           </div>
         </div>
-        <div className={styles.flexListContainer}>
-          <div className={styles.flexList}>
-            <label htmlFor="file_certificate_basic_st">
-              Upload Certificate of Basic Safety Training (Optional)
-            </label>
+        <div className={styles.educationContainer}>
+          <div className={styles.educationList}>
+            <label>Certificate Basic Safety Training</label>
             <input
-              className={styles.inputFile}
-              accept=".pdf, .doc, .docx"
-              type="file"
+              onChange={handleInputChange}
+              type="number"
               id="file_certificate_basic_st"
               name="file_certificate_basic_st"
-              ref={basicSTRef}
+              value={formData.file_certificate_basic_st.number}
+              placeholder="Number"
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of issue:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_certificate_basic_st"
+              name="file_certificate_basic_st"
+              value={formData.file_certificate_basic_st.date_of_issue}
+              max={today}
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of expiry:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_certificate_basic_st"
+              name="file_certificate_basic_st"
+              value={formData.file_certificate_basic_st.date_of_expiry}
+              min={today}
             />
           </div>
         </div>
-        <div className={styles.flexListContainer}>
-          <div className={styles.flexList}>
-            <label htmlFor="file_certificate_safety_at">
-              Upload Certificate of Safety Awareness Traning (Optional)
-            </label>
+        <div className={styles.educationContainer}>
+          <div className={styles.educationList}>
+            <label>Certificate Security Awareness Training</label>
             <input
-              className={styles.inputFile}
-              accept=".pdf, .doc, .docx"
-              type="file"
+              onChange={handleInputChange}
+              type="number"
               id="file_certificate_safety_at"
               name="file_certificate_safety_at"
-              ref={safetyRef}
+              value={formData.file_certificate_safety_at.number}
+              placeholder="Number"
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of issue:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_certificate_safety_at"
+              name="file_certificate_safety_at"
+              value={formData.file_certificate_safety_at.date_of_issue}
+              max={today}
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of expiry:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_certificate_safety_at"
+              name="file_certificate_safety_at"
+              value={formData.file_certificate_safety_at.date_of_expiry}
+              min={today}
             />
           </div>
         </div>
-        <div className={styles.flexListContainer}>
-          <div className={styles.flexList}>
-            <label htmlFor="file_certificate_crowd_m">
-              Upload Certificate of Crowd Management (Optional)
-            </label>
+        <div className={styles.educationContainer}>
+          <div className={styles.educationList}>
+            <label>Certificate Crowd Management</label>
             <input
-              className={styles.inputFile}
-              accept=".pdf, .doc, .docx"
-              type="file"
+              onChange={handleInputChange}
+              type="number"
               id="file_certificate_crowd_m"
               name="file_certificate_crowd_m"
-              ref={crowdRef}
+              value={formData.file_certificate_crowd_m.number}
+              placeholder="Number"
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of issue:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_certificate_crowd_m"
+              name="file_certificate_crowd_m"
+              value={formData.file_certificate_crowd_m.date_of_issue}
+              max={today}
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of expiry:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_certificate_crowd_m"
+              name="file_certificate_crowd_m"
+              value={formData.file_certificate_crowd_m.date_of_expiry}
+              min={today}
             />
           </div>
         </div>
-        <div className={styles.flexListContainer}>
-          <div className={styles.flexList}>
-            <label htmlFor="file_certificate_crisis_mhb">
-              Upload Certificate of Crisis Management and Human Behaviour
-              (Optional)
-            </label>
+        <div className={styles.educationContainer}>
+          <div className={styles.educationList}>
+            <label>Certificate Crisis Management and Human Behaviour</label>
             <input
-              className={styles.inputFile}
-              accept=".pdf, .doc, .docx"
-              type="file"
+              onChange={handleInputChange}
+              type="number"
               id="file_certificate_crisis_mhb"
               name="file_certificate_crisis_mhb"
-              ref={crisisRef}
+              value={formData.file_certificate_crisis_mhb.number}
+              placeholder="Number"
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of issue:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_certificate_crisis_mhb"
+              name="file_certificate_crisis_mhb"
+              value={formData.file_certificate_crisis_mhb.date_of_issue}
+              max={today}
+            />
+          </div>
+          <div className={styles.educationList}>
+            <label>Date of expiry:</label>
+            <input
+              onChange={handleInputChange}
+              type="date"
+              id="file_certificate_crisis_mhb"
+              name="file_certificate_crisis_mhb"
+              value={formData.file_certificate_crisis_mhb.date_of_expiry}
+              min={today}
+            />
+          </div>
+        </div>
+      </div>
+      <div className={styles.topContainer}>
+        <div className={styles.flexListContainer}>
+          <div className={styles.flexList}>
+            <label htmlFor="image_profile">Upload Pass Photo</label>
+            <input
+              className={styles.inputFile}
+              accept="image/*"
+              type="file"
+              id="image_profile"
+              name="image_profile"
+              ref={photoRef}
+              placeholder="Browse"
             />
           </div>
         </div>
