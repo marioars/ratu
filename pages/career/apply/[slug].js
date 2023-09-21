@@ -695,7 +695,7 @@ const Apply = ({ detailJob, domicile }) => {
             <label>Passport</label>
             <input
               onChange={handleInputChange}
-              type="number"
+              type="text"
               id="file_passport"
               name="file_passport"
               value={formData.file_passport.number}
@@ -730,7 +730,7 @@ const Apply = ({ detailJob, domicile }) => {
             <label>Seaman Book</label>
             <input
               onChange={handleInputChange}
-              type="number"
+              type="text"
               id="file_seaman_book"
               name="file_seaman_book"
               value={formData.file_seaman_book.number}
@@ -765,7 +765,7 @@ const Apply = ({ detailJob, domicile }) => {
             <label>C1D Visa</label>
             <input
               onChange={handleInputChange}
-              type="number"
+              type="text"
               id="file_c1d_visa"
               name="file_c1d_visa"
               value={formData.file_c1d_visa.number}
@@ -800,7 +800,7 @@ const Apply = ({ detailJob, domicile }) => {
             <label>Certificate Basic Safety Training</label>
             <input
               onChange={handleInputChange}
-              type="number"
+              type="text"
               id="file_certificate_basic_st"
               name="file_certificate_basic_st"
               value={formData.file_certificate_basic_st.number}
@@ -835,7 +835,7 @@ const Apply = ({ detailJob, domicile }) => {
             <label>Certificate Security Awareness Training</label>
             <input
               onChange={handleInputChange}
-              type="number"
+              type="text"
               id="file_certificate_safety_at"
               name="file_certificate_safety_at"
               value={formData.file_certificate_safety_at.number}
@@ -870,7 +870,7 @@ const Apply = ({ detailJob, domicile }) => {
             <label>Certificate Crowd Management</label>
             <input
               onChange={handleInputChange}
-              type="number"
+              type="text"
               id="file_certificate_crowd_m"
               name="file_certificate_crowd_m"
               value={formData.file_certificate_crowd_m.number}
@@ -905,7 +905,7 @@ const Apply = ({ detailJob, domicile }) => {
             <label>Certificate Crisis Management and Human Behaviour</label>
             <input
               onChange={handleInputChange}
-              type="number"
+              type="text"
               id="file_certificate_crisis_mhb"
               name="file_certificate_crisis_mhb"
               value={formData.file_certificate_crisis_mhb.number}
