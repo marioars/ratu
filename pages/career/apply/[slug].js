@@ -544,7 +544,7 @@ const Apply = ({ detailJob, domicile }) => {
       </div>
       {formData.tattoos !== 0 && (
         <div className={styles.flexListContainer2}>
-          <p>Do your tattoo can be seen while wearing short sleeve shirts?</p>
+          <p>Does your tattoo can be seen when you wear short sleeve?</p>
           <div className={styles.flexListContainerRadio}>
             <div className={styles.flexListRadio}>
               <input
