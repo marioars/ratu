@@ -74,16 +74,16 @@ const Career = ({ principals }) => {
     setJobs(jobs.data);
     setLoading(false);
   };
-  const fetchAllJobs = async () => {
-    setLoading(true);
-    const res = await fetch(`${server}/api/v1/career/open/all`);
-    const jobs = await res.json();
-    setJobs(jobs.data);
-    setLoading(false);
-  };
-  useEffect(() => {
-    fetchAllJobs();
-  }, []);
+  // const fetchAllJobs = async () => {
+  //   setLoading(true);
+  //   const res = await fetch(`${server}/api/v1/career/open/all`);
+  //   const jobs = await res.json();
+  //   setJobs(jobs.data);
+  //   setLoading(false);
+  // };
+  // useEffect(() => {
+  //   fetchAllJobs();
+  // }, []);
   return (
     <AnimatedPage>
       <Head>
@@ -153,7 +153,7 @@ const Career = ({ principals }) => {
           </div>
         </div>
         <div className={styles.buttonJobContainer}>
-          <button onClick={fetchAllJobs}>all</button>
+          {/* <button onClick={fetchAllJobs}>all</button> */}
           <button onClick={() => fetchJobsByBtn(1)}>Jakarta</button>
           <button onClick={() => fetchJobsByBtn(3)}>Yogyakarta</button>
           <button onClick={() => fetchJobsByBtn(2)}>Bali</button>
@@ -163,7 +163,9 @@ const Career = ({ principals }) => {
         ) : jobs.length > 0 ? (
           <JobList jobs={jobs} />
         ) : (
-          <span className={styles.spanNoVacancy}>Still No Vacancy...</span>
+          <span className={styles.spanNoVacancy}>
+            Please select City that You want to apply...
+          </span>
         )}
       </div>
     </AnimatedPage>

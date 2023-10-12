@@ -114,6 +114,18 @@
   cursor: pointer;
 }
 
+.buttonJobContainer button:focus {
+  outline: none;
+  border: none;
+  background-color: var(--centerBlue);
+  color: var(--white);
+  border: 3px solid var(--centerBlue);
+  border-radius: var(--roundedXSmall);
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 .loader {
   border: 5px solid var(--lightGrey);
   border-radius: 50%;
