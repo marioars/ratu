@@ -18,7 +18,7 @@
 }
 
 .preview .contents {
-  width: 16.883rem;
+  /* width: 16.883rem; */
   height: 11rem;
   position: fixed;
   display: flex;
@@ -45,41 +45,40 @@
   gap: 1.5rem;
 }
 
-.buttonContainer button {
-  background-color: var(--grey2);
-  border-radius: var(--roundedMedium);
+.buttonContainer .explore {
+  background-color: transparent;
+  border-radius: var(--roundedXSmall);
   font-size: var(--sizeSmall);
   color: var(--white);
   text-transform: uppercase;
   padding: 1rem 2rem;
   margin-top: 1rem;
   outline: none;
-  border: 3px solid black;
+  border: 3px solid white;
   cursor: pointer;
-  height: 4rem;
+  height: 3.3rem;
 }
 
-.buttonContainer button:hover {
+.buttonContainer .explore:hover {
   background-color: var(--lightBlue);
 }
 
-.contents .explore:hover {
-  cursor: pointer;
-}
-
-.btn_training {
-  background-color: var(--grey2);
-  border-radius: var(--roundedMedium);
+.buttonContainer .explore1 {
+  background-color: transparent;
+  border-radius: var(--roundedXSmall);
   font-size: var(--sizeSmall);
   color: var(--white);
   text-transform: uppercase;
-  padding: 1rem 3rem;
+  padding: 1rem 2rem 1rem 2rem;
   margin-top: 1rem;
   outline: none;
-  border: 3px solid black;
+  border: 3px solid white;
   cursor: pointer;
-  height: 4rem;
-  text-align: center;
+  height: 3.3rem;
+}
+
+.buttonContainer .explore1:hover {
+  background-color: var(--lightBlue);
 }
 
 @keyframes fadeOut {

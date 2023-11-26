@@ -273,15 +273,12 @@ const Apply = ({ detailJob, domicile }) => {
           date_of_expiry: formData.file_certificate_crisis_mhb.date_of_expiry,
         },
         ...files,
-        // image_profile: {
-        //   nama_file: "test.png",
-        //   base64: "test",
-        // },
       };
       const { data } = await axios.post(
-        `${server}/api/v1/career/apply/v3`,
+        `${server}/api/v1/career/apply/v4`,
         requestBody
       );
+      console.log(requestBody, "requestBody");
       if (data) {
         Swal.fire({
           position: "center",
@@ -355,9 +352,9 @@ const Apply = ({ detailJob, domicile }) => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Something went wrong! Check your input again",
+        text: error.response.data.msg || error.response.data.error,
       });
-      console.error("failed to submit form", error);
+      console.log("failed to submit form", error);
     }
   };
 
@@ -369,7 +366,7 @@ const Apply = ({ detailJob, domicile }) => {
           <input
             className={styles.nik}
             onChange={handleInputChange}
-            type="number"
+            type="text"
             id="nik"
             name="nik"
             value={formData.nik}
@@ -441,6 +438,7 @@ const Apply = ({ detailJob, domicile }) => {
             id="dob"
             name="dob"
             value={formData.dob}
+            required
           />
         </div>
         <div className={styles.flexList}>
@@ -469,6 +467,7 @@ const Apply = ({ detailJob, domicile }) => {
             id=""
             cols="30"
             rows="7"
+            required
           ></textarea>
         </div>
         <div className={styles.rightContainer}>
@@ -493,6 +492,7 @@ const Apply = ({ detailJob, domicile }) => {
           <div>
             <label htmlFor="province">Province</label>
             <input
+              className={styles.province}
               type="text"
               onChange={handleInputChange}
               id="province"
@@ -528,6 +528,7 @@ const Apply = ({ detailJob, domicile }) => {
               name="hasTattoo"
               value="yes"
               onChange={handleHasTattooChange}
+              required
             />
             <label className={styles.tattooLabel}>Yes</label>
           </div>
@@ -537,6 +538,7 @@ const Apply = ({ detailJob, domicile }) => {
               name="hasTattoo"
               value="no"
               onChange={handleHasTattooChange}
+              required
             />
             <label className={styles.tattooLabel}>No</label>
           </div>
@@ -552,6 +554,7 @@ const Apply = ({ detailJob, domicile }) => {
                 name="visibleWithShortSleeves"
                 value="yes"
                 onChange={handleVisibleWithShortSleevesChange}
+                required
               />
               <label className={styles.tattooLabel}>Yes</label>
             </div>
@@ -561,6 +564,7 @@ const Apply = ({ detailJob, domicile }) => {
                 name="visibleWithShortSleeves"
                 value="no"
                 onChange={handleVisibleWithShortSleevesChange}
+                required
               />
               <label className={styles.tattooLabel}>No</label>
             </div>

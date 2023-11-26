@@ -282,6 +282,10 @@
 }
 
 @media (max-width: 576px) {
+  .formContainer {
+    padding: 2rem 1.5rem;
+  }
+
   .flexContainer {
     display: flex;
     flex-direction: column;
@@ -303,11 +307,15 @@
   }
 
   .flexList .selectBox {
-    width: 310px;
+    width: 336px;
+  }
+
+  .flexList .selectBox2 {
+    width: 336px;
   }
 
   .flexContainer input{
-    width: 310px;
+    width: 336px;
   }
 
   .gridContainer {
@@ -324,6 +332,20 @@
   }
 
   .rightContainer .selectBox {
-    width: 310px;
+    width: 336px;
+  }
+
+  .rightContainer .province {
+    width: 336px;
+  }
+
+  .topContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .submitContainer {
+    padding-top: 1rem;
   }
 }

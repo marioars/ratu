@@ -48,7 +48,7 @@ const Preview = ({ setIsOpen }) => {
             careers at sea
           </button>
           <a
-            className={styles.btn_training}
+            className={styles.explore1}
             href="https://reinedesmers.ac/"
             target="_blank"
             rel="noopener noreferrer"

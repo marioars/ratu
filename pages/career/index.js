@@ -1,11 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
+
 import AnimatedPage from "../../components/AnimatedPage/AnimatedPage";
 import styles from "./career.module.css";
 import { myLoader } from "../../configs/loader";
 import { server } from "../../configs/domain";
 import JobList from "../../components/JobList/JobList";
-import { useEffect, useState } from "react";
 
 const images = [
   {
@@ -38,52 +39,48 @@ const Career = ({ principals }) => {
   const [jobs, setJobs] = useState([]);
   const [selectedPrincipal, setSelectedPrincipal] = useState("");
   const [searchText, setSearchText] = useState("");
+  const [city, setCity] = useState(0);
   const [loading, setLoading] = useState(false);
+
   const handlePrincipalChange = (event) => {
     setSelectedPrincipal(event.target.value);
   };
+
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
   };
-  const handleSearch = () => {
+
+  const handleSearch = (jobs) => {
     const filteredData = jobs?.filter((item) =>
       item.name_position?.toLowerCase().includes(searchText.toLowerCase())
     );
     setJobs(filteredData);
   };
+
   const fetchJobCruises = async () => {
     setLoading(true);
     const res = await fetch(
-      `${server}/api/v1/career/open/${selectedPrincipal}`
+      `${server}/api/v1/career/open/${selectedPrincipal}?location=${city}`
     );
     const jobs = await res.json();
-    setJobs(jobs.data);
+    handleSearch(jobs?.data);
     setLoading(false);
   };
-  const handleButtonClick = () => {
+
+  const handleSearchPrincipal = () => {
     if (selectedPrincipal) {
       fetchJobCruises();
     } else if (searchText) {
       handleSearch();
     }
   };
+
   const fetchJobsByBtn = async (id) => {
     setLoading(true);
-    const res = await fetch(`${server}/api/v1/career/open/all?location=${id}`);
-    const jobs = await res.json();
-    setJobs(jobs.data);
+    setCity(id);
     setLoading(false);
   };
-  // const fetchAllJobs = async () => {
-  //   setLoading(true);
-  //   const res = await fetch(`${server}/api/v1/career/open/all`);
-  //   const jobs = await res.json();
-  //   setJobs(jobs.data);
-  //   setLoading(false);
-  // };
-  // useEffect(() => {
-  //   fetchAllJobs();
-  // }, []);
+
   return (
     <AnimatedPage>
       <Head>
@@ -147,16 +144,31 @@ const Career = ({ principals }) => {
               value={searchText}
               onChange={handleInputChange}
             />
-            <button onClick={handleButtonClick}>
+            <button onClick={handleSearchPrincipal}>
               {loading ? <div className={styles.loader}></div> : "search"}
             </button>
           </div>
         </div>
         <div className={styles.buttonJobContainer}>
           {/* <button onClick={fetchAllJobs}>all</button> */}
-          <button onClick={() => fetchJobsByBtn(1)}>Jakarta</button>
-          <button onClick={() => fetchJobsByBtn(3)}>Yogyakarta</button>
-          <button onClick={() => fetchJobsByBtn(2)}>Bali</button>
+          <button
+            className={city === 1 ? styles.activeCity : styles.nonActiveCity}
+            onClick={() => fetchJobsByBtn(1)}
+          >
+            Jakarta
+          </button>
+          <button
+            className={city === 3 ? styles.activeCity : styles.nonActiveCity}
+            onClick={() => fetchJobsByBtn(3)}
+          >
+            Yogyakarta
+          </button>
+          <button
+            className={city === 2 ? styles.activeCity : styles.nonActiveCity}
+            onClick={() => fetchJobsByBtn(2)}
+          >
+            Bali
+          </button>
         </div>
         {loading ? (
           <div className={styles.loader}></div>
