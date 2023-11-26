@@ -172,7 +172,7 @@ const Career = ({ principals }) => {
         </div>
         {loading ? (
           <div className={styles.loader}></div>
-        ) : jobs.length > 0 ? (
+        ) : jobs?.length > 0 ? (
           <JobList jobs={jobs} />
         ) : (
           <span className={styles.spanNoVacancy}>
