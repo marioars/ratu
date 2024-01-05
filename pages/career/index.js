@@ -36,7 +36,7 @@ const images = [
 ];
 
 const Career = ({ principals }) => {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState(null);
   const [selectedPrincipal, setSelectedPrincipal] = useState("");
   const [searchText, setSearchText] = useState("");
   const [city, setCity] = useState(0);
@@ -172,11 +172,15 @@ const Career = ({ principals }) => {
         </div>
         {loading ? (
           <div className={styles.loader}></div>
-        ) : jobs?.length > 0 ? (
+        ) : jobs === null ? (
+          <span className={styles.spanNoVacancy}>
+            Please select City that You want to apply...
+          </span>
+        ) : jobs.length > 0 ? (
           <JobList jobs={jobs} />
         ) : (
           <span className={styles.spanNoVacancy}>
-            Please select City that You want to apply...
+            No current job openings...
           </span>
         )}
       </div>

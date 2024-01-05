@@ -583,6 +583,7 @@ const Apply = ({ detailJob, domicile }) => {
                   handleEducationChange(index, "name_edu", e.target.value)
                 }
                 placeholder="School Name"
+                required
               />
             </div>
             <div className={styles.educationList}>
@@ -594,6 +595,7 @@ const Apply = ({ detailJob, domicile }) => {
                   handleEducationChange(index, "from", e.target.value)
                 }
                 max={today}
+                required
               />
             </div>
             <div className={styles.educationList}>
@@ -605,6 +607,7 @@ const Apply = ({ detailJob, domicile }) => {
                   handleEducationChange(index, "end", e.target.value)
                 }
                 max={today}
+                required
               />
             </div>
             {edu.type_edu === "Add for higher levels (Optional)" && (
@@ -642,6 +645,7 @@ const Apply = ({ detailJob, domicile }) => {
                   handleWorkChange(index, "name_experience", e.target.value)
                 }
                 placeholder="Name of Employer"
+                required
               />
             </div>
             <div className={styles.educationList}>
@@ -652,6 +656,7 @@ const Apply = ({ detailJob, domicile }) => {
                 onChange={(e) =>
                   handleWorkChange(index, "job_position", e.target.value)
                 }
+                required
               />
             </div>
             <div className={styles.educationList}>
@@ -663,6 +668,7 @@ const Apply = ({ detailJob, domicile }) => {
                   handleWorkChange(index, "from", e.target.value)
                 }
                 max={today}
+                required
               />
             </div>
             <div className={styles.educationList}>
@@ -672,6 +678,7 @@ const Apply = ({ detailJob, domicile }) => {
                 value={work.end}
                 onChange={(e) => handleWorkChange(index, "end", e.target.value)}
                 max={today}
+                required
               />
             </div>
             {index !== 0 && (
