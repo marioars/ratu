@@ -26,6 +26,7 @@ const Apply = ({ detailJob, domicile }) => {
     home_city_airport: "",
     career_principal_id: detailJob.data.id_career_principal,
     tattoos: 0,
+    another_language: "0",
     educational_background: [
       {
         type_edu: "Elementary School",
@@ -116,6 +117,14 @@ const Apply = ({ detailJob, domicile }) => {
   const handleVisibleWithShortSleevesChange = (e) => {
     const value = e.target.value === "yes" ? 1 : 2;
     setFormData((prevData) => ({ ...prevData, tattoos: value }));
+  };
+
+  const handleLanguage = (e) => {
+    const value = e.target.value;
+    setFormData((prevData) => ({
+      ...prevData,
+      another_language: value === "yes" ? "" : "0",
+    }));
   };
 
   const handleEducationChange = (index, field, value) => {
@@ -225,6 +234,7 @@ const Apply = ({ detailJob, domicile }) => {
         home_city_airport: formData.home_city_airport,
         career_principal_id: formData.career_principal_id,
         tattoos: formData.tattoos,
+        another_language: formData.another_language,
         educational_background: formData.educational_background.map((edu) => ({
           type_edu: edu.type_edu,
           name_edu: edu.name_edu,
@@ -275,10 +285,9 @@ const Apply = ({ detailJob, domicile }) => {
         ...files,
       };
       const { data } = await axios.post(
-        `${server}/api/v1/career/apply/v4`,
+        `${server}/api/v1/career/apply/v5`,
         requestBody
       );
-      console.log(requestBody, "requestBody");
       if (data) {
         Swal.fire({
           position: "center",
@@ -304,6 +313,7 @@ const Apply = ({ detailJob, domicile }) => {
           career_principal_id: null,
           career_principal_id_second: null,
           tattoos: 0,
+          another_language: "0",
           educational_background: [],
           working_experience: [],
           file_passport: {
@@ -354,7 +364,6 @@ const Apply = ({ detailJob, domicile }) => {
         title: "Oops...",
         text: error.response.data.msg || error.response.data.error,
       });
-      console.log("failed to submit form", error);
     }
   };
 
@@ -567,6 +576,52 @@ const Apply = ({ detailJob, domicile }) => {
                 required
               />
               <label className={styles.tattooLabel}>No</label>
+            </div>
+          </div>
+        </div>
+      )}
+      <div className={styles.flexListContainer2}>
+        <label htmlFor="language">
+          Do you speak other language than english?
+        </label>
+        <div className={styles.flexListContainerRadio}>
+          <div className={styles.flexListRadio}>
+            <input
+              type="radio"
+              name="language"
+              value="yes"
+              onChange={handleLanguage}
+              required
+            />
+            <label className={styles.tattooLabel}>Yes</label>
+          </div>
+          <div className={styles.flexListRadio}>
+            <input
+              type="radio"
+              name="language"
+              value="no"
+              onChange={handleLanguage}
+              required
+            />
+            <label className={styles.tattooLabel}>No</label>
+          </div>
+        </div>
+      </div>
+      {formData.another_language !== "0" && (
+        <div className={styles.flexListContainer}>
+          <p>Other language: e.g. Japanese, French, etc</p>
+          <div className={styles.flexListContainerRadio}>
+            <div className={styles.flexList}>
+              <input
+                className={styles.nik}
+                onChange={handleInputChange}
+                type="text"
+                id="another_language"
+                name="another_language"
+                value={formData.another_language}
+                placeholder="Japanese, French, etc"
+                required
+              />
             </div>
           </div>
         </div>

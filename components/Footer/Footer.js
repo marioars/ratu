@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
   return (
     <footer className={styles.footer}>
       <div className={styles.logo}>
@@ -72,7 +73,7 @@ const Footer = () => {
         </div>
         <div className={styles.footerDescBot}>
           <span>
-            Copyright 2023 PT. Ratu Oceania Raya | All Rights Reserved.
+            Copyright {year} PT. Ratu Oceania Raya | All Rights Reserved.
           </span>
         </div>
       </div>
