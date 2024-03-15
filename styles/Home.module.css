@@ -32,6 +32,17 @@
   margin-top: 0;
 }
 
+.addressParagraph {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.addressParagraph2 {
+  /* margin: 0; */
+  margin-top: 1rem;
+  margin-bottom: 0
+}
+
 @media (max-width: 576px) {
   .addressContainer {
     flex-direction: column;

@@ -35,7 +35,19 @@ export default function Home({ banners, section, principals }) {
           {address.map((item) => (
             <div className={styles.listAddress} key={item.id}>
               <h1>{item.city}</h1>
-              <span>{item.address}</span>
+              <p className={styles.addressParagraph}>{item.address}</p>
+              <p className={styles.addressParagraph}>{item.phone}</p>
+              <p
+                className={
+                  item.address2
+                    ? styles.addressParagraph2
+                    : styles.addressParagraph
+                }
+              >
+                {item.address2}
+              </p>
+              <p className={styles.addressParagraph}>{item.phone2}</p>
+              <p className={styles.addressParagraph}>{item.email}</p>
             </div>
           ))}
         </div>
